@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/test1.dart';
+import 'package:flutter_learn/learn/stop_spinning.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final test1 = Test1();
+  final stopSpinning = StopSpinning();
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            test1.stockSummary(
-              ['BBAR 150', 'CDXE 515', 'BKWR 250', 'BTSQ 890', 'DRTY 600'],
-              ['A', 'B', 'C', 'D'],
-            ),
+            stopSpinning.spinWords('Hey fellow warriors'),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
