@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/stop_spinning.dart';
+import 'package:flutter_learn/learn/product_array.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final stopSpinning = StopSpinning();
+  final productArray = ProductArray();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            stopSpinning.spinWords('Hey fellow warriors'),
+            productArray.productArray([3, 27, 4, 2]).toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
