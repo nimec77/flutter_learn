@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/product_array.dart';
+import 'package:flutter_learn/learn/build_a_pile_of_cubes.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final productArray = ProductArray();
+  final buildAPile = BuildAPileOfCubes();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            productArray.productArray([3, 27, 4, 2]).toString(),
+            buildAPile.findNb(1071225).toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
