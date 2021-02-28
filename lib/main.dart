@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/build_a_pile_of_cubes.dart';
+import 'package:flutter_learn/learn/consecutive_strings.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final buildAPile = BuildAPileOfCubes();
+  final consecutiveString = ConsecutiveStrings();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            buildAPile.findNb(1071225).toString(),
+            consecutiveString
+                .longestConsecBest(['zone', 'abigail', 'theta', 'form', 'libe', 'zas', 'theta', 'abigail'], 2),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
