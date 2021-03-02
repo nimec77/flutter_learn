@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/build_a_pile_of_cubes.dart';
+import 'package:flutter_learn/learn/primes_in_numbers.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final buildAPile = BuildAPileOfCubes();
+  final primesInNumbers = PrimesInNumbers();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            buildAPile.findNb(1071225).toString(),
+            primesInNumbers.primeFactorsBest(7775460),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
