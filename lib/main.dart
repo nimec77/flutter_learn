@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/primes_in_numbers.dart';
+
+import 'learn/perimeter_of_squares_in_a_rectangle.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final primesInNumbers = PrimesInNumbers();
+  final perimeter = PerimeterOfSquaresInARectangle();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            primesInNumbers.primeFactorsBest(7775460),
+            perimeter.perimeter(20).toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
