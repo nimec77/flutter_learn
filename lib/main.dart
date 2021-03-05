@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-
-import 'learn/perimeter_of_squares_in_a_rectangle.dart';
+import 'package:flutter_learn/learn/my_smallest_code_interpreter.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final perimeter = PerimeterOfSquaresInARectangle();
+  final mySmallestCodeInterpreter = MySmallestCodeInterpreter();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,9 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            perimeter.perimeter(20).toString(),
+            mySmallestCodeInterpreter.brainLuck(
+                '++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.',
+                ''),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
