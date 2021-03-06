@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/my_smallest_code_interpreter.dart';
+import 'package:flutter_learn/learn/you_are_a_square.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final mySmallestCodeInterpreter = MySmallestCodeInterpreter();
+  final youAreASquare = YouAreASquare();
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            mySmallestCodeInterpreter.brainLuck(
-                '++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.',
-                ''),
+            youAreASquare.isSquareBest(-1).toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),

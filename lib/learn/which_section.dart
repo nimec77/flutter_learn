@@ -4,7 +4,7 @@ class WhichSection {
     int position = -1;
     final mapSize = a.asMap();
     for (final index in mapSize.keys) {
-      scrollY += mapSize[index];
+      scrollY += mapSize[index]!;
       if (n < scrollY) {
         position = index;
         break;

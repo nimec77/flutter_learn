@@ -4,7 +4,7 @@ class FillTheHardDiskDrive {
     int result = 0;
     final mapSizes = sizes.asMap();
     for (final index in mapSizes.keys) {
-      sum += mapSizes[index];
+      sum += mapSizes[index]!;
       if (sum > hd) {
         return result;
       }

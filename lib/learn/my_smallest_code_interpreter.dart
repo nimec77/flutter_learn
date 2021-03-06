@@ -55,13 +55,13 @@ class MySmallestCodeInterpreter {
 
         case '[':
           if (stack[selector] == 0) {
-            iCode = brackets[iCode];
+            iCode = brackets[iCode]!;
           }
           break;
 
         case ']':
           if (stack[selector] != 0) {
-            iCode = brackets[iCode];
+            iCode = brackets[iCode]!;
           }
           break;
       }
