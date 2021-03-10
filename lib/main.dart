@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/you_are_a_square.dart';
+import 'package:flutter_learn/learn/get_the_middle_character.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final youAreASquare = YouAreASquare();
+  final getTheMiddleCharacter = GetTheMiddleCharacter();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            youAreASquare.isSquareBest(-1).toString(),
+            getTheMiddleCharacter.getMiddle('test'),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
