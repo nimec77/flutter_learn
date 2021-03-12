@@ -14,7 +14,7 @@ class PrimesInNumbers {
       primes.add(count > 1 ? '($number**$count)' : '($number)');
     }
 
-    return primes.join('');
+    return primes.join();
   }
 
   String primeFactorsBest(int n) {

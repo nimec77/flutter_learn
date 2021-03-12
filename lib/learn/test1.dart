@@ -15,7 +15,7 @@ class Test1 {
   int _summaryByLetter(String letter, List<String> lstOfArt) {
     final result = lstOfArt.where((element) => element.startsWith(letter)).map((item) => item.split(' ')).fold<int>(0,
         (value, element) {
-      if (element == null || element.isEmpty) {
+      if (element.isEmpty) {
         return 0;
       }
       return value + int.parse(element[1]);

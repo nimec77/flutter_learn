@@ -9,7 +9,7 @@ class ConsecutiveStrings {
     final List<String> longestList = [];
 
     for (int i = 0; i <= n - k; i++) {
-      longestList.add(strarr.getRange(i, i + k).join(''));
+      longestList.add(strarr.getRange(i, i + k).join());
     }
     final maxLength = longestList.map((str) => str.length).reduce(max);
 
@@ -20,7 +20,7 @@ class ConsecutiveStrings {
     String current = '';
 
     for (int i = 0; i <= strarr.length - k; i++) {
-      final temp = strarr.getRange(i, i + k).join('');
+      final temp = strarr.getRange(i, i + k).join();
       if (temp.length > current.length) {
         current = temp;
       }

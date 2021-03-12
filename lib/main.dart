@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/get_the_middle_character.dart';
+
+import 'learn/are_they_the_same.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final getTheMiddleCharacter = GetTheMiddleCharacter();
+  final areTheyTheSame = AreTheyTheSame();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            getTheMiddleCharacter.getMiddle('test'),
+            areTheyTheSame.comp([2, 2, 3], [4, 9, 9]).toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
