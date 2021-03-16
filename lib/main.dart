@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-
-import 'learn/are_they_the_same.dart';
+import 'package:flutter_learn/learn/grasshopper_summation.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final areTheyTheSame = AreTheyTheSame();
+  final grasshopperSummation = GrasshopperSummation();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            areTheyTheSame.comp([2, 2, 3], [4, 9, 9]).toString(),
+            grasshopperSummation.summation(8).toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
