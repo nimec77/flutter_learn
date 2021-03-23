@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/grasshopper_summation.dart';
+import 'package:flutter_learn/learn/sum_of_a_beach.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final grasshopperSummation = GrasshopperSummation();
+  final sumOfABeach = SumOfABeach();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            grasshopperSummation.summation(8).toString(),
+            sumOfABeach.sumOfABeach('sun shine').toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
