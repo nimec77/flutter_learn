@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/sum_of_a_beach.dart';
+import 'package:flutter_learn/learn/a_disguised_sequence.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final sumOfABeach = SumOfABeach();
+  final aDisguisedSequence = ADisguisedSequence();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            sumOfABeach.sumOfABeach('sun shine').toString(),
+            aDisguisedSequence.fcn(17).toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
