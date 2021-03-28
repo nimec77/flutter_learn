@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/a_disguised_sequence.dart';
+import 'package:flutter_learn/learn/4/sum_by_factors.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final aDisguisedSequence = ADisguisedSequence();
+  final sumByFactors = SumByFactors();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            aDisguisedSequence.fcn(17).toString(),
+            sumByFactors.sumOfDivided([37, 13, 19, 33, -18, 79, 26]),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
