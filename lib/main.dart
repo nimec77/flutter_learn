@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/4/sum_by_factors.dart';
+import 'package:flutter_learn/learn/6/find_the_parity_outlier.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final sumByFactors = SumByFactors();
+  final findTheParityOutlier = FindTheParityOutlier();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            sumByFactors.sumOfDivided([37, 13, 19, 33, -18, 79, 26]),
+            findTheParityOutlier.find([99,77,331,717,89,22073,8,7,101]).toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
