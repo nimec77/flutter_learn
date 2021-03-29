@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/learn/6/find_the_parity_outlier.dart';
+import 'package:flutter_learn/learn/algorithms/miller_rabin_test.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final findTheParityOutlier = FindTheParityOutlier();
+  final millerRabinTest = MillerRabinTest();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            findTheParityOutlier.find([99,77,331,717,89,22073,8,7,101]).toString(),
+            millerRabinTest.test(3458, 50).toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
