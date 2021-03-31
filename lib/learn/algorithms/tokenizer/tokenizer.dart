@@ -4,11 +4,7 @@ class Tokenizer {
   final Set<String> _delimiters = '${Token.operators}()'.split('').toSet();
 
   Iterable<Token> tokenize(String expression) sync* {
-    String data = expression.replaceAll(' ', '');
-    // if (data.startsWith('-(')) {
-    //   data = data.replaceFirst('-', 'minus');
-    // }
-    print('"$data"');
+    final data = expression.replaceAll(' ', '');
     String sequence = '';
 
     for (int i = 0; i < data.length; i++) {
