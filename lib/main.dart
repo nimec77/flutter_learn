@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/6/find_the_parity_outlier.dart';
-import 'package:flutter_learn/learn/algorithms/miller_rabin_test.dart';
+import 'package:flutter_learn/learn/2/evaluate_mathematical_expression.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final millerRabinTest = MillerRabinTest();
+  final evaluateMathematicalExpression = EvaluateMathematicalExpression();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            millerRabinTest.test(3458, 50).toString(),
+            evaluateMathematicalExpression.calc('3 * 5').toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
