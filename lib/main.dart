@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/2/evaluate_mathematical_expression.dart';
+import 'package:flutter_learn/learn/5/josephus_permutation.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final evaluateMathematicalExpression = EvaluateMathematicalExpression();
+  final josephusPermutation = JosephusPermutation();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Text(
-            evaluateMathematicalExpression.calc('3 * 5').toString(),
+            josephusPermutation.josephus([1, 2, 3, 4, 5, 6, 7], 3).toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
