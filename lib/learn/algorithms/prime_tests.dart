@@ -1,7 +1,36 @@
 import 'dart:math';
 
-class MillerRabinTest {
-  bool test(int n, int k) {
+class PrimeTests {
+
+  bool prime(int n) {
+    for (int i = 2; i <= sqrt(n); i++) {
+      if (n % i == 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  bool ferma(int n) {
+    final random = Random();
+    if (n == 2) {
+      return true;
+    }
+
+    for (int i = 0; i < 100; i++) {
+      final a = ((random.nextDouble() % ( n - 2)) + 2).toInt();
+      if (a.gcd(n) != 1) {
+        return false;
+      }
+      if (a.modPow(n - 1, n) != 1) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  bool millerRabin(int n, int k) {
     final rand = Random();
     var t = n - 1;
     int s = 0;

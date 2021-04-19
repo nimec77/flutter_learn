@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/5/common_denominators.dart';
-import 'package:flutter_learn/learn/5/primes_in_numbers.dart';
+import 'package:flutter_learn/learn/6/steps_in_primes.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final commonDenominators = CommonDenominators();
+  final stepsInPrimes = StepsInPrimes();
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +19,14 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Учим Dart'),
         ),
-        body: Center(
-          child: Text(
-            commonDenominators.convertFrac([ [4, 8], [4, 5], [3, 4], [6, 9], [7, 10] ]).toString(),
-            style: Theme.of(context).textTheme.headline6,
+        body: SingleChildScrollView(
+          child: Wrap(
+            children: [
+              Text(
+                stepsInPrimes.step(2, 2, 10000).toString(),
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ],
           ),
         ),
       ),
