@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/6/steps_in_primes.dart';
+import 'package:flutter_learn/learn/algorithms/beautiful_appearance.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final stepsInPrimes = StepsInPrimes();
+  final beautifulAppearance = BeautifulAppearance();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           child: Wrap(
             children: [
               Text(
-                stepsInPrimes.step(2, 2, 10000).toString(),
+                beautifulAppearance.toBeautiful(229.56, 7),
                 style: Theme.of(context).textTheme.headline6,
               ),
             ],
