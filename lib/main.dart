@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_learn/learn/algorithms/beautiful_appearance.dart';
+import 'package:flutter_learn/learn/algorithms/digital_palindrome.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final beautifulAppearance = BeautifulAppearance();
+  final digitalPalindrome = DigitalPalindrome();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           child: Wrap(
             children: [
               Text(
-                beautifulAppearance.toBeautiful(229.56, 7),
+                digitalPalindrome.palindrome('1178711', 1).toString(),
                 style: Theme.of(context).textTheme.headline6,
               ),
             ],
