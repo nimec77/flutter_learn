@@ -21,7 +21,6 @@ class DigitalPalindrome {
       }
       index++;
     }
-    print(dif);
 
     for (final key in dif.keys) {
       left[key] = dif[key]!;
@@ -37,7 +36,6 @@ class DigitalPalindrome {
     }
     result.addAll(left.reversed.toList());
 
-    print(remain);
     return int.parse(result.join());
   }
 
