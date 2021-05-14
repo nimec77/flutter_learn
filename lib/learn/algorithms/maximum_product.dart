@@ -25,8 +25,8 @@ class MaximumProduct {
     if (positives.isEmpty && l.isOdd) {
       return negatives.reversed.take(l).fold(1, (previousValue, element) => previousValue * element);
     }
-    final p = List.filled(list.length, 1);
-    final n = List.filled(list.length, 1);
+    final p = List.filled(list.length + 1, 1);
+    final n = List.filled(list.length + 1, 1);
 
     for (int i = 1; i <= positives.length; i++) {
       p[i] = positives[i - 1] * p[i - 1];

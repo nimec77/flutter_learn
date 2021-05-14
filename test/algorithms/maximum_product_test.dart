@@ -10,6 +10,15 @@ void main() {
     test('should return 300', () {
       expect(maximumProduct.maxProduct([-100, 2, -3], 2), 300);
     });
+    test ('should return 12', () {
+      expect(maximumProduct.maxProduct([-2, -3, -4], 2), 12);
+    });
+    test ('should return -24', () {
+      expect(maximumProduct.maxProduct([-2, -3, -4], 3), -24);
+    });
+    test ('should return -24', () {
+      expect(maximumProduct.maxProduct([-2, 3, -4, 2, 1], 3), 24);
+    });
     test ('should return 4320', () {
       expect(maximumProduct.maxProduct([-10, 9, -8, -7, -6, 2, 1], 4), 3360);
     });
