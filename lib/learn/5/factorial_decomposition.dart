@@ -1,41 +1,36 @@
-import 'dart:math' as math;
 
 class FactorialDecomposition {
   String decomp(int n) {
-    final primes = getPrimes(n);
-    final p = primes.first;
-    int index = 1;
-    int sum = 0;
-    do {
-      final div = n ~/ math.pow(p, index);
-      if (div == 0) {
-        break;
+    final result = <String>[];
+    for (final p in getPrimes(n)) {
+      int sum = 0;
+      int denominator = p;
+      int term = n ~/ denominator;
+      while(term > 0) {
+        sum += term;
+        denominator *= p;
+        term = n ~/ denominator;
       }
-      sum += div;
-    } while (true);
-    return '';
+      result.add(sum > 1 ? '$p^$sum' : p.toString());
+    }
+    return result.join(' * ');
   }
 
   List<int> getPrimes(int n) {
-    final isPrimes = List.generate(n, (index) => true);
+    final length = n + 1;
+    final isPrimes = List.generate(length, (index) => true);
     isPrimes[0] = false;
     isPrimes[1] = false;
 
-    for (int i = 2; i * i < n; i++) {
+    for (int i = 2; i * i < length; i++) {
       if (isPrimes[i]) {
-        for (int j = i * i; j < n; j += i) {
+        for (int j = i * i; j < length; j += i) {
           isPrimes[j] = false;
         }
       }
     }
-    final map = isPrimes.asMap();
-    final result = <int>[];
-    map.forEach((key, value) {
-      if (value) {
-        result.add(key);
-      }
-    });
+    final result = isPrimes.asMap();
 
-    return result;
+    return result.keys.where((key) => result[key]!).toList();
   }
 }
