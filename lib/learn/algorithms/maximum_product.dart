@@ -1,7 +1,7 @@
 class MaximumProduct {
   int maxProduct(List<int> list, int l) {
     if (list.isEmpty) {
-      return 0;
+      throw ArgumentError('Product on empty list');
     }
 
     final positives = <int>[];
@@ -44,5 +44,44 @@ class MaximumProduct {
     }
 
     return max;
+  }
+
+  int maxProductByPairs(List<int> list, int l) {
+    if (list.isEmpty) {
+      throw ArgumentError('Product on empty list');
+    }
+
+    final length = list.length;
+
+    if (length <= l) {
+      return list.fold(1, (previousValue, element) => previousValue * element);
+    }
+
+    final sortedList = [...list]..sort();
+
+    int nIndex = 0;
+    int pIndex = length - 1;
+    int remaining = l;
+    int product = 1;
+
+    while (remaining > 0) {
+      if (remaining == 1) {
+        product *= sortedList[pIndex];
+        break;
+      }
+      final pProduct = sortedList[pIndex] * sortedList[pIndex - 1];
+      final nProduct = sortedList[nIndex] * sortedList[nIndex + 1];
+      if (pProduct > nProduct) {
+        product *= pProduct;
+        pIndex -= 2;
+      } else {
+        product *= nProduct;
+        nIndex += 2;
+      }
+      // final p1 = pIndex;
+      // final n1 = length - (nIndex + 1);
+      remaining = l - nIndex - length + pIndex + 1;
+    }
+    return product;
   }
 }
