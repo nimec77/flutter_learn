@@ -16,4 +16,28 @@ class GradeBook {
 
     return 'A';
   }
+
+  String getGradeBest(int a, int b, int c) {
+    String result = 'F';
+
+    switch ((a + b + c) ~/ 30) {
+      case 10:
+      case 9:
+        result = 'A';
+        break;
+
+      case 8:
+        result = 'B';
+        break;
+
+      case 7:
+        result = 'C';
+        break;
+      case 6:
+        result = 'D';
+        break;
+    }
+
+    return result;
+  }
 }
