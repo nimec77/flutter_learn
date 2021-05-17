@@ -28,12 +28,12 @@ class DiseaseSpread {
     final dt = tm / n;
     double s = s0.toDouble();
     double i = i0.toDouble();
-    double r = 0;
+    // double r = 0;
 
     for (int j = 1; j <= n; j++) {
       final nextI = i + dt * (b * s * i - a * i);
       s -= dt * b * s * i;
-      r += dt * i * a;
+      // r += dt * i * a;
       if (nextI < i) {
         return i.ceil();
       }

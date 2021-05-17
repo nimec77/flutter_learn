@@ -11,6 +11,7 @@ class CountingDuplicated {
         result++;
         do {
           i++;
+        // ignore: invariant_booleans
         } while (i < lst.length && symbol == lst[i]);
       }
       if (i < lst.length) {

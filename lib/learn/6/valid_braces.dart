@@ -25,18 +25,18 @@ class ValidBraces {
     return ')]}'.contains(bracket);
   }
 
-  bool _isOppositeBracket(String bracket, String fromStack) {
-    switch (bracket) {
-      case ')':
-        return fromStack == '(';
-      case ']':
-        return fromStack == '[';
-
-      case '}':
-        return fromStack == '{';
-    }
-    return false;
-  }
+  // bool _isOppositeBracket(String bracket, String fromStack) {
+  //   switch (bracket) {
+  //     case ')':
+  //       return fromStack == '(';
+  //     case ']':
+  //       return fromStack == '[';
+  //
+  //     case '}':
+  //       return fromStack == '{';
+  //   }
+  //   return false;
+  // }
 
   bool _isOppositeBracketBest(String bracket, String fromStack) {
     return _oppositeBracket[bracket] == fromStack;

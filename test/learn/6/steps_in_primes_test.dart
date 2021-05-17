@@ -2,7 +2,7 @@ import 'package:flutter_learn/learn/6/steps_in_primes.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testing(int g, int start, int limit, List<int> exp) {
+  void testing(int g, int start, int limit, List<int> exp) {
     final stepsInPrimes = StepsInPrimes();
     test('Testing for $g $start $limit', () => expect(stepsInPrimes.stepBest(g, start, limit), equals(exp)));
   }

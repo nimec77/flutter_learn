@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final factorialDecomposition = FactorialDecomposition();
-  testing(int n, String exp) =>
+  void testing(int n, String exp) =>
       test('Testing for $n', () =>
           expect(factorialDecomposition.decomp(n), equals(exp)));
 

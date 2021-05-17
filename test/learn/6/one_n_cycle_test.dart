@@ -3,13 +3,13 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final oneNCycle = OneNCycle();
-  dotest(int n, int exp) => test('Testing for $n', () => expect(oneNCycle.cycle(n), equals(exp)));
+  void doTest(int n, int exp) => test('Testing for $n', () => expect(oneNCycle.cycle(n), equals(exp)));
 
   group('fixed tests', () {
-    dotest(3, 1);
-    dotest(33, 2);
-    dotest(18118, -1);
-    dotest(69, 22);
-    dotest(197, 98);
+    doTest(3, 1);
+    doTest(33, 2);
+    doTest(18118, -1);
+    doTest(69, 22);
+    doTest(197, 98);
   });
 }

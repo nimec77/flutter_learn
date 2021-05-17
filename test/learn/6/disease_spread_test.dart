@@ -12,14 +12,14 @@ void main() {
     }
     return inrange;
   }
-  dotest(int tm, int n, int s0, int i0, double b, double a, int exp) =>
+  void doTest(int tm, int n, int s0, int i0, double b, double a, int exp) =>
       test('Testing for $tm $n $s0 $i0 $b $a', () =>
           expect(aux(tm, n, s0, i0, b, a, exp), equals(true)));
 
   group('fixed tests', () {
-    dotest(18, 432, 1004, 1, 0.00209, 0.51, 420);
-    dotest(12, 288, 1007, 2, 0.00206, 0.45, 461);
-    dotest(13, 312, 999, 1, 0.00221, 0.55, 409);
+    doTest(18, 432, 1004, 1, 0.00209, 0.51, 420);
+    doTest(12, 288, 1007, 2, 0.00206, 0.45, 461);
+    doTest(13, 312, 999, 1, 0.00221, 0.55, 409);
 
   });
 }
