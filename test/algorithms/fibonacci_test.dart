@@ -14,11 +14,11 @@ void main() {
     expect(89, fibonacci.fibMemorize(11));
   });
 
-  test('memorize - should return 89', () {
+  test('matrix - should return 89', () {
     expect(89, fibonacci.fibMatrix(11));
   });
 
-  test('memorize - should return 3416454622906707', () {
+  test('matrix - should return 3416454622906707', () {
     expect(3416454622906707, fibonacci.fibMatrix(76));
   });
 }
