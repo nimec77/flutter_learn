@@ -28,6 +28,38 @@ class TwiceLinear {
     return u.last;
   }
 
+  int dblLinearBest(int n) {
+    int indexY = 0;
+    int indexZ = 0;
+    int eq = 0;
+    int y = 3;
+    int z = 4;
+
+    final u = <int>[1];
+
+
+    while (indexY + indexZ < n + eq) {
+      if (y < z) {
+        u.add(y);
+        indexY++;
+        y = 2 * u[indexY] + 1;
+      } else if (y > z) {
+        u.add(z);
+        indexZ++;
+        z = 3 * u[indexZ] + 1;
+      } else {
+        u.add(y);
+        indexY++;
+        indexZ++;
+        y = 2 * u[indexY] + 1;
+        z = 3 * u[indexZ] + 1;
+        eq++;
+      }
+    }
+
+    return u.last;
+  }
+
   int dblLinearTree(int n) {
     final tree = SplayTreeSet<int>.from([1]);
     for (int i = 1; i <= n; i++) {
