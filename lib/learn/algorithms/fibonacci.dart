@@ -86,4 +86,20 @@ class Fibonacci {
 
     return result[1][0];
   }
+
+  List<int> fibGen(int n) {
+    int prev = 0;
+    int next = 1;
+
+    return List.generate(n, (index) {
+      if (index <= 1) {
+        return index;
+      }
+      final temp = next;
+      next = prev + next;
+      prev = temp;
+
+      return next;
+    });
+  }
 }
