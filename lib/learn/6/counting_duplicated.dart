@@ -1,12 +1,12 @@
 class CountingDuplicated {
   int duplicateCount(String text) {
-    int result = 0;
+    var result = 0;
     if (text.isEmpty) {
       return result;
     }
     final lst = text.toLowerCase().split('')..sort();
     var symbol = lst[0];
-    for (int i = 1; i < lst.length; i++) {
+    for (var i = 1; i < lst.length; i++) {
       if (symbol == lst[i]) {
         result++;
         do {

@@ -36,8 +36,8 @@ class SomeEgyptianFractions {
 
   String decomposeBest(String nrStr, String drStr) {
     final result = <String>[];
-    int x = int.parse(nrStr);
-    int y = int.parse(drStr);
+    var x = int.parse(nrStr);
+    var y = int.parse(drStr);
     while (x >= y) {
       result.add((x ~/ y).toString());
       x %= y;

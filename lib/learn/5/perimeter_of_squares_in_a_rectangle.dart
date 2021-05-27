@@ -1,10 +1,10 @@
 class PerimeterOfSquaresInARectangle {
   BigInt perimeter(int m) {
-    BigInt prev = BigInt.one;
-    BigInt next = BigInt.one;
-    BigInt result = BigInt.two;
+    var prev = BigInt.one;
+    var next = BigInt.one;
+    var result = BigInt.two;
 
-    for (int i = 0; i < m - 1; i++) {
+    for (var i = 0; i < m - 1; i++) {
       final temp = next;
       next = prev + next;
       prev = temp;

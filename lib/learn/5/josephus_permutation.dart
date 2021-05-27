@@ -5,8 +5,8 @@ class JosephusPermutation {
       return items;
     }
     final result = [];
-    int j = 0;
-    for (int l = 0; l < n; l++) {
+    var j = 0;
+    for (var l = 0; l < n; l++) {
       final m = n - l;
       j = (j + k - 1) % m;
       result.add(items[j]);

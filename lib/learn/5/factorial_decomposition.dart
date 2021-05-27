@@ -3,9 +3,9 @@ class FactorialDecomposition {
   String decomp(int n) {
     final result = <String>[];
     for (final p in getPrimes(n)) {
-      int sum = 0;
-      int denominator = p;
-      int term = n ~/ denominator;
+      var sum = 0;
+      var denominator = p;
+      var term = n ~/ denominator;
       while(term > 0) {
         sum += term;
         denominator *= p;
@@ -22,9 +22,9 @@ class FactorialDecomposition {
     isPrimes[0] = false;
     isPrimes[1] = false;
 
-    for (int i = 2; i * i < length; i++) {
+    for (var i = 2; i * i < length; i++) {
       if (isPrimes[i]) {
-        for (int j = i * i; j < length; j += i) {
+        for (var j = i * i; j < length; j += i) {
           isPrimes[j] = false;
         }
       }

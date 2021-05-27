@@ -3,8 +3,8 @@ class OneNCycle {
     if (n % 2 == 0 || n % 5 == 0) {
       return -1;
     }
-    int i = 0;
-    int val = 1;
+    var i = 0;
+    var val = 1;
     while (true) {
       i++;
       val = val * 10 % n;
@@ -18,8 +18,8 @@ class OneNCycle {
     if (n % 2 == 0 || n % 5 == 0) {
       return -1;
     }
-    int i = 1;
-    for (int val = 1; val != 1; i++) {
+    var i = 1;
+    for (var val = 1; val != 1; i++) {
       val = val * 10 % n;
     }
 

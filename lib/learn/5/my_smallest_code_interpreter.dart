@@ -2,16 +2,16 @@ import 'dart:collection';
 
 class MySmallestCodeInterpreter {
   String brainLuck(String code, String input) {
-    int selector = 0;
+    var selector = 0;
     final lenCode = code.length;
-    int iCode = 0;
+    var iCode = 0;
     final out = StringBuffer();
-    final stack = <int>[];
-    stack.add(0);
+    final stack = <int>[0];
+    // stack.add(0);
     final brackets = <int, int>{};
 
     final stackBrackets = <int>[];
-    for (int i = 0; i < lenCode; i++) {
+    for (var i = 0; i < lenCode; i++) {
       if (code[i] == '[') {
         stackBrackets.add(i);
       }

@@ -3,7 +3,7 @@ class ValidParentheses {
     if (braces.isEmpty) {
       return true;
     }
-    int bracesCount = 0;
+    var bracesCount = 0;
     final splits = braces.split('');
     for (final element in splits) {
       if (element == '(') {

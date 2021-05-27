@@ -10,8 +10,8 @@ class EvaluateMathematicalExpression {
   }
 
   Queue<Token> _infixToRpn(String expression) {
-    final Queue<Token> stack = Queue();
-    final Queue<Token> output = Queue();
+    final stack = Queue<Token>();
+    final output = Queue<Token>();
 
     final tokens = Tokenizer().tokenize(expression);
     for (final token in tokens) {

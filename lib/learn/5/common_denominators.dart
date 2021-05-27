@@ -1,6 +1,6 @@
 class CommonDenominators {
   String convertFrac(List<List<int>> lst) {
-    final list = lst.map((e) => reduced(e)).toList();
+    final list = lst.map(reduced).toList();
 
     final ns = list.map((e) => e[1]).toList();
     final divisors = ns.fold<int>(ns[0], lcm);

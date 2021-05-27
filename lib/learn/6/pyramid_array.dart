@@ -2,7 +2,7 @@ class PyramidArray {
   List<List<int>> pyramid(int n) {
     final result = <List<int>>[];
 
-    for (int i = 1; i <= n; i++) {
+    for (var i = 1; i <= n; i++) {
       result.add(List.filled(i, 1));
     }
 

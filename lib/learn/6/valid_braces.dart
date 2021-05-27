@@ -4,7 +4,7 @@ class ValidBraces {
   final _oppositeBracket = {')': '(', ']': '[', '}': '{'};
 
   bool validBraces(String braces) {
-    final Queue<String> bracesQueue = Queue();
+    final bracesQueue = Queue<String>();
     for (final bracket in braces.split('')) {
       if (_isOpenBracket(bracket)) {
         bracesQueue.add(bracket);
@@ -43,7 +43,7 @@ class ValidBraces {
   }
 
   bool validBracesBest(String braces) {
-    String result = braces;
+    var result = braces;
     while (braces.contains('()') || braces.contains('[]') || braces.contains('{}')) {
       result = result.replaceAll('()', '');
       result = result.replaceAll('[]', '');
@@ -54,7 +54,7 @@ class ValidBraces {
   }
 
   bool validBracesReg(String braces) {
-    String result = braces;
+    var result = braces;
     final regex = RegExp(r'(\(\)|\[\]|\{\})');
     while (regex.hasMatch(result)) {
       result = result.replaceFirst(regex, '');

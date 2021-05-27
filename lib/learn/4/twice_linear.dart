@@ -2,9 +2,9 @@ import 'dart:collection';
 
 class TwiceLinear {
   int dblLinear(int n) {
-    int ai = 0;
-    int bi = 0;
-    int eq = 0;
+    var ai = 0;
+    var bi = 0;
+    var eq = 0;
 
     final u = <int>[1];
 
@@ -29,14 +29,13 @@ class TwiceLinear {
   }
 
   int dblLinearBest(int n) {
-    int indexY = 0;
-    int indexZ = 0;
-    int eq = 0;
-    int y = 3;
-    int z = 4;
+    var indexY = 0;
+    var indexZ = 0;
+    var eq = 0;
+    var y = 3;
+    var z = 4;
 
     final u = <int>[1];
-
 
     while (indexY + indexZ < n + eq) {
       if (y < z) {
@@ -62,11 +61,12 @@ class TwiceLinear {
 
   int dblLinearTree(int n) {
     final tree = SplayTreeSet<int>.from([1]);
-    for (int i = 1; i <= n; i++) {
+    for (var i = 1; i <= n; i++) {
       final x = tree.first;
-      tree.remove(x);
-      tree.add(2 * x + 1);
-      tree.add(3 * x + 1);
+      tree
+        ..remove(x)
+        ..add(2 * x + 1)
+        ..add(3 * x + 1);
     }
     return tree.first;
   }

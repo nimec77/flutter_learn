@@ -39,17 +39,17 @@ class ScreenLockingPatterns {
     if (length == 1) {
       return 1;
     }
-    int result = 0;
+    var result = 0;
     visited[toIndex(start)] = true;
     final neighbours = board[start]!;
-    for (int i = 0; i < neighbours.length; i++) {
+    for (var i = 0; i < neighbours.length; i++) {
       if (!visited[toIndex(neighbours[i])]) {
         result += calc(visited, neighbours[i], length - 1);
       }
     }
     if (passOvers.containsKey(start)) {
       final passOver = passOvers[start]!;
-      for (int i = 0; i < passOver.length / 2; i++) {
+      for (var i = 0; i < passOver.length / 2; i++) {
         final target = passOver[i * 2];
         final condition = passOver[i * 2 + 1];
         if (visited[toIndex(condition)] && !visited[toIndex(target)]) {

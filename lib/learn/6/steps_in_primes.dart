@@ -4,11 +4,11 @@ class StepsInPrimes {
   List<int> step(int g, int start, int end) {
 
     final prevPrimes = <int>[];
-    int first = primes(start, end).first;
-    int index = 0;
+    var first = primes(start, end).first;
+    var index = 0;
     for (final second in primes(start, end)) {
       prevPrimes.add(second);
-      int dif = second - first;
+      var dif = second - first;
       if (dif == g) {
         return [first, second];
       } else {
@@ -26,7 +26,7 @@ class StepsInPrimes {
   }
 
   Iterable<int> primes(int start, int end) sync* {
-    for (int number = start; number <= end; number++) {
+    for (var number = start; number <= end; number++) {
       if (isPrime(number)) {
         yield number;
       }
@@ -34,7 +34,7 @@ class StepsInPrimes {
   }
 
   bool isPrime(int n) {
-    for (int i = 2; i <= sqrt(n); i++) {
+    for (var i = 2; i <= sqrt(n); i++) {
       if (n % i == 0) {
         return false;
       }
@@ -43,7 +43,7 @@ class StepsInPrimes {
   }
 
   List<int> stepBest(int g, int start, int end) {
-    for (int number = start; number <= end - g; number ++) {
+    for (var number = start; number <= end - g; number ++) {
       if (isPrime(number) && isPrime(number + g)) {
         return[number, number + g];
       }

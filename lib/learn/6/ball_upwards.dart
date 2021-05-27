@@ -4,9 +4,9 @@ class BallUpwards {
 
     final v = v0 * 5 / 18;
 
-    double max = -1;
-    double h = 0;
-    int i = 1;
+    var max = -1.0;
+    var h = 0.0;
+    var i = 1;
     while (max < h) {
       max = h;
       final t = i++ / 10;

@@ -1,9 +1,9 @@
 class PrimesInNumbers {
   String primeFactors(int n) {
     final primes = <String>[];
-    int lst = n;
-    for (int number = 2; number <= lst; number++) {
-      int count = 0;
+    var lst = n;
+    for (var number = 2; number <= lst; number++) {
+      var count = 0;
       while (lst % number == 0) {
         count++;
         lst ~/= number;
@@ -19,9 +19,9 @@ class PrimesInNumbers {
 
   String primeFactorsBest(int n) {
     final primes = StringBuffer();
-    int lst = n;
-    for (int number = 2; number <= lst; number++) {
-      int count = 0;
+    var lst = n;
+    for (var number = 2; number <= lst; number++) {
+      var count = 0;
       while (lst % number == 0) {
         count++;
         lst ~/= number;
