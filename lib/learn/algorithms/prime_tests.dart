@@ -3,7 +3,7 @@ import 'dart:math';
 class PrimeTests {
 
   bool prime(int n) {
-    for (int i = 2; i <= sqrt(n); i++) {
+    for (var i = 2; i <= sqrt(n); i++) {
       if (n % i == 0) {
         return false;
       }
@@ -17,7 +17,7 @@ class PrimeTests {
       return true;
     }
 
-    for (int i = 0; i < 100; i++) {
+    for (var i = 0; i < 100; i++) {
       final a = ((random.nextDouble() % ( n - 2)) + 2).toInt();
       if (a.gcd(n) != 1) {
         return false;
@@ -33,18 +33,18 @@ class PrimeTests {
   bool millerRabin(int n, int k) {
     final rand = Random();
     var t = n - 1;
-    int s = 0;
+    var s = 0;
     while (t.isEven) {
       t ~/= 2;
       s++;
     }
-    for (int i = 0; i < k; i++) {
+    for (var i = 0; i < k; i++) {
       final a = rand.nextInt(n - 2) + 2;
-      int x = a.modPow(t, n);
+      var x = a.modPow(t, n);
       if (x == 1 || x == n -1) {
         continue;
       }
-      for (int r = 1; r < s; r++) {
+      for (var r = 1; r < s; r++) {
         x = x.modPow(2, n);
         if (x == 1) {
           return false;

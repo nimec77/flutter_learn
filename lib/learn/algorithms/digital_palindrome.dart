@@ -9,8 +9,8 @@ class DigitalPalindrome {
     if (dif.length > replacements) {
       return -1;
     }
-    int remain = replacements - dif.length;
-    int index = 0;
+    var remain = replacements - dif.length;
+    var index = 0;
     while (remain > 0 && index < length) {
       if (dif.containsKey(index)) {
         remain--;
@@ -41,7 +41,7 @@ class DigitalPalindrome {
 
   Map<int, int> differences(List<int> left, List<int> right) {
     final result = <int, int>{};
-    for (int i = 0; i < left.length; i++) {
+    for (var i = 0; i < left.length; i++) {
       if (left[i] != right[i]) {
         result[i] = math.max(left[i], right[i]);
       }

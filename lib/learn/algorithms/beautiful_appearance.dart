@@ -2,7 +2,7 @@ import 'dart:math';
 
 class BeautifulAppearance {
   String toBeautiful(double value, int maxLength) {
-    int fixed = maxLength - 1;
+    var fixed = maxLength - 1;
     if (value > 10000) {
       fixed = 0;
     } else if (value > 1000) {
@@ -25,7 +25,7 @@ class BeautifulAppearance {
       str = str.substring(0, maxLength);
     }
     final lst = str.split('.');
-    int divider = 0;
+    var divider = 0;
     if (lst.length > 1) {
       divider = lst[1].length;
     }

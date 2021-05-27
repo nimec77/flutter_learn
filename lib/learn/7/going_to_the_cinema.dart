@@ -1,8 +1,8 @@
 class GoingToTheCinema {
   int movie(int card, int ticket, double perc) {
-    int count = 1;
-    double cardTicket = ticket * perc;
-    double sum = card + cardTicket;
+    var count = 1;
+    var cardTicket = ticket * perc;
+    var sum = card + cardTicket;
     while (ticket * count <= sum.ceil()) {
       cardTicket = cardTicket * perc;
       sum += cardTicket;

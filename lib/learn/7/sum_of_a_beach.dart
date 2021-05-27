@@ -1,9 +1,9 @@
 class SumOfABeach {
   int sumOfABeach(String beach) {
-    String str = beach.toLowerCase();
+    var str = beach.toLowerCase();
     final beaches = ['sand', 'water', 'fish', 'sun'];
 
-    int sum = 0;
+    var sum = 0;
     for (final beach in beaches) {
       while (str.isNotEmpty && str.contains(beach)) {
         sum++;

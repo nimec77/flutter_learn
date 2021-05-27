@@ -67,7 +67,7 @@ class RandomList implements ListBase<int> {
   @override
   Map<int, int> asMap() {
     final map = <int, int>{};
-    for (int i = 0; i < length; i++) {
+    for (var i = 0; i < length; i++) {
       map[i] = this[i];
     }
     return map;

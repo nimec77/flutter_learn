@@ -2,8 +2,8 @@ typedef FibonacciFunction = int Function(int);
 
 class Fibonacci {
   int fibClassic(int n) {
-    int prev = 0, next = 1;
-    for (int i = 0; i < n; i++) {
+    var prev = 0, next = 1;
+    for (var i = 0; i < n; i++) {
       final temp = next;
       next += prev;
       prev = temp;
@@ -88,8 +88,8 @@ class Fibonacci {
   }
 
   List<int> fibGen(int n) {
-    int prev = 0;
-    int next = 1;
+    var prev = 0;
+    var next = 1;
 
     return List.generate(n, (index) {
       if (index <= 1) {

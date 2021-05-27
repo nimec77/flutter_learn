@@ -28,15 +28,15 @@ class MaximumProduct {
     final p = List.filled(list.length + 1, 1);
     final n = List.filled(list.length + 1, 1);
 
-    for (int i = 1; i <= positives.length; i++) {
+    for (var i = 1; i <= positives.length; i++) {
       p[i] = positives[i - 1] * p[i - 1];
     }
-    for (int i = 1; i <= negatives.length; i++) {
+    for (var i = 1; i <= negatives.length; i++) {
       n[i] = negatives[i - 1] * n[i - 1];
     }
 
-    int max = 0;
-    for (int i = 1; i <= l / 2; i++) {
+    var max = 0;
+    for (var i = 1; i <= l / 2; i++) {
       final k = p[l - 2 * i] * n[2 * i];
       if (max < k) {
         max = k;
@@ -59,10 +59,10 @@ class MaximumProduct {
 
     final sortedList = [...list]..sort();
 
-    int nIndex = 0;
-    int pIndex = length - 1;
-    int remaining = l;
-    int product = 1;
+    var nIndex = 0;
+    var pIndex = length - 1;
+    var remaining = l;
+    var product = 1;
 
     while (remaining > 0) {
       if (remaining == 1) {

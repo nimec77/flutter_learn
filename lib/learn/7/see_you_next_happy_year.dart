@@ -1,6 +1,6 @@
 class SeeYouNextHappyYear {
   int nextHappyYear(int year) {
-    int newYear = year;
+    var newYear = year;
     do {
       newYear++;
     } while (!isHappyYear(newYear));

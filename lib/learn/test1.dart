@@ -3,7 +3,7 @@ class Test1 {
     if (lstOfArt.isEmpty || (lstOf1stLetter as Iterable).isEmpty) {
       return '';
     }
-    final List<String> listOfResult = (lstOf1stLetter as Iterable<String>)
+    final listOfResult = (lstOf1stLetter as Iterable<String>)
         .map((letter) => '($letter : ${_summaryByLetter(letter, lstOfArt)})')
         .toList();
     // for (final letter in lstOf1stLetter) {

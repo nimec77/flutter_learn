@@ -1,7 +1,7 @@
 class ARuleOfDivisibilityBy7 {
   List<int> seven(int m) {
     var n = m;
-    int count = 0;
+    var count = 0;
     if (m <= 0) {
       return [0, 0];
     }
@@ -17,7 +17,7 @@ class ARuleOfDivisibilityBy7 {
   }
 
   List<int> sevenBest(int m) {
-    int count = 0;
+    var count = 0;
     var n = m;
     while(n > 99) {
       count++;

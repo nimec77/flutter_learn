@@ -5,9 +5,9 @@ class Tokenizer {
 
   Iterable<Token> tokenize(String expression) sync* {
     final data = expression.replaceAll(' ', '');
-    String sequence = '';
+    var sequence = '';
 
-    for (int i = 0; i < data.length; i++) {
+    for (var i = 0; i < data.length; i++) {
       final char = data[i];
 
       if (char == '-' && (i == 0 || (Token(data[i - 1]).isOperator || Token(data[i - 1]).isOpenBracket))) {

@@ -9,8 +9,8 @@ class CountTheDigit {
     if (element == d) {
       return 1;
     }
-    int value = element;
-    int result = 0;
+    var value = element;
+    var result = 0;
     while (value > 0) {
       final digit = value % 10;
       if (digit == d) {

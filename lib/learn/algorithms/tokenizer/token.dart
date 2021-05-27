@@ -1,10 +1,11 @@
 class Token {
+  const Token(this.value);
+
   static const String operators = '+-*/';
   static const Set<String> functions = {'minus'};
 
   final String value;
 
-  const Token(this.value);
 
   bool get isNumber {
     if (num.tryParse(value) != null) {

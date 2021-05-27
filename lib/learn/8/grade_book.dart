@@ -18,7 +18,7 @@ class GradeBook {
   }
 
   String getGradeBest(int a, int b, int c) {
-    String result = 'F';
+    var result = 'F';
 
     switch ((a + b + c) ~/ 30) {
       case 10:

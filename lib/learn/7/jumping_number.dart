@@ -1,7 +1,7 @@
 class JumpingNumber {
   String jumpingNumber(int n) {
     final ls = n.toString().split('').map(int.parse).toList();
-    for (int i = 1; i < ls.length; i++) {
+    for (var i = 1; i < ls.length; i++) {
       final div = ls[i - 1] - ls[i];
       if (div.abs() != 1) {
         return 'Not!!';

@@ -4,7 +4,7 @@ class PlusMinus {
       return 0;
     }
 
-    int result = 0;
+    var result = 0;
     arr.skip(1).fold(sign(arr.first), (previousValue, element) {
       final item = sign(element);
       if (previousValue != item) {

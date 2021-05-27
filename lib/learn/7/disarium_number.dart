@@ -5,7 +5,7 @@ class DisariumNumber {
     final numbers = n.toString().split('').map(int.parse).toList();
 
     num disarium = 0;
-    for (int i = 0; i < numbers.length; i++) {
+    for (var i = 0; i < numbers.length; i++) {
       disarium += pow(numbers[i], i + 1);
     }
     return disarium.toInt() == n ? 'Disarium !!' : 'Not !!';
