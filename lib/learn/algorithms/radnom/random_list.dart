@@ -177,7 +177,7 @@ class RandomList implements ListBase<int> {
   Iterator<int> get iterator => throw UnimplementedError();
 
   @override
-  String join([String separator = ""]) {
+  String join([String separator = '']) {
     // TODO: implement join
     throw UnimplementedError();
   }

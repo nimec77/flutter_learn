@@ -1,7 +1,7 @@
 class WhichSection {
   int getSectionId(int n, List<int> a) {
-    int scrollY = 0;
-    int position = -1;
+    var scrollY = 0;
+    var position = -1;
     final mapSize = a.asMap();
     for (final index in mapSize.keys) {
       scrollY += mapSize[index]!;

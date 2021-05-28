@@ -5,7 +5,7 @@ void main() {
   group('gps', () {
     final speedControl = SpeedControl();
     void testing(int actual, int exp) {
-      final int r = (actual - exp).abs();
+      final r = (actual - exp).abs();
       expect(r <= 1, equals(true), reason: '(actual - expected).abs must be <= 1 but was ${r.toStringAsFixed(2)}');
     }
 

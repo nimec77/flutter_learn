@@ -1,6 +1,6 @@
 class OddOnesOut {
   List<int> oddOnesOut(List<int> nums) {
-    final List<int> result = List.from(nums);
+    final result = List<int>.from(nums);
     final unique = result.toSet();
 
     for (final num in unique) {

@@ -8,7 +8,7 @@ void main() {
           expect(bestTravel.chooseBestSumBest(t, k, ls), equals(exp)));
 
   group('fixed tests', () {
-    List<int> ts = [50, 55, 56, 57, 58];
+    var ts = <int>[50, 55, 56, 57, 58];
     dotest(163, 3, ts, 163);
     ts = [50];
     dotest(163, 3, ts, -1);

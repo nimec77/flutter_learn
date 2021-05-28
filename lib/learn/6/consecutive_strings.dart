@@ -19,7 +19,7 @@ class ConsecutiveStrings {
   String longestConsecBest(List<String> strarr, int k) {
     var current = '';
 
-    for (int i = 0; i <= strarr.length - k; i++) {
+    for (var i = 0; i <= strarr.length - k; i++) {
       final temp = strarr.getRange(i, i + k).join();
       if (temp.length > current.length) {
         current = temp;

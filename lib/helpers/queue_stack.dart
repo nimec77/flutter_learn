@@ -8,7 +8,7 @@ class QueueStack<T> {
   }
 
   T pop() {
-    final T lastElement = _stack.last;
+    final lastElement = _stack.last;
     _stack.removeLast();
 
     return lastElement;
