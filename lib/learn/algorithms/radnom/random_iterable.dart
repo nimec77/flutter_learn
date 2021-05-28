@@ -254,8 +254,7 @@ class RandomIterable implements Iterable<int> {
 
   @override
   Iterable<T> whereType<T>() {
-    // TODO: implement whereType
-    throw UnimplementedError();
+    return WhereTypeIterable(this);
   }
 
   @override

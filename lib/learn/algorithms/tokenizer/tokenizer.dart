@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter_learn/learn/algorithms/tokenizer/token.dart';
 
 class Tokenizer {

@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 typedef _ExpandFunction<int, T> = Iterable<T> Function(int sourceElement);
 
 class ExpandIterable<int, T> extends Iterable<T> {
@@ -65,7 +67,6 @@ class FollowedByIterable extends Iterable<int> {
 
   final Iterable<int> _first;
   final Iterable<int> _second;
-
 
   @override
   Iterator<int> get iterator => FollowedByIterator(_first, _second);
@@ -460,6 +461,34 @@ class WhereIterator extends Iterator<int> {
   bool moveNext() {
     while (_iterator.moveNext()) {
       if (_f(_iterator.current)) {
+        return true;
+      }
+    }
+    return false;
+  }
+}
+
+class WhereTypeIterable<T> extends Iterable<T> {
+  WhereTypeIterable(this._source);
+
+  final Iterable<Object?> _source;
+
+  @override
+  Iterator<T> get iterator => WhereTypeIterator(_source.iterator);
+}
+
+class WhereTypeIterator<T> implements Iterator<T> {
+  WhereTypeIterator(this._source);
+
+  final Iterator<Object?> _source;
+
+  @override
+  T get current => _source.current as T;
+
+  @override
+  bool moveNext() {
+    while (_source.moveNext()) {
+      if (_source.current is int) {
         return true;
       }
     }
