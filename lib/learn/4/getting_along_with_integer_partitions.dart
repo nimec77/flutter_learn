@@ -1,10 +1,10 @@
 class GettingAlongWithIntegerPartitions {
-  final list = List.filled(100, 0, growable: false);
-  final products = <int>{};
 
   String part(int n) {
-    allUniqueParts(n);
-    // currTerm(n, n, 0);
+    final products = <int>{};
+    for (final parts in partitions(n)) {
+      products.add(parts.reduce((value, element) => value * element));
+    }
     final ls = products.toList()..sort();
 
     final len = ls.length;
@@ -21,51 +21,16 @@ class GettingAlongWithIntegerPartitions {
     return 'Range: $range Average: ${average.toStringAsFixed(2)} Median: ${median.toStringAsFixed(2)}';
   }
 
-  void currTerm(int n, int k, int i) {
-    if (n < 0) {
+  Iterable<List<int>> partitions(int n) sync* {
+    if (n == 0) {
+      yield [];
       return;
     }
-    if (n == 0) {
-      products.add(list.take(i).reduce((value, element) => value * element));
-    } else {
-      if (n >= k) {
-        list[i] = k;
-        currTerm(n - k, k, i + 1);
+    for (final parts in partitions(n - 1)) {
+      yield[1] + parts;
+      if (parts.isNotEmpty && (parts.length < 2 || parts[1] > parts.first)) {
+        yield [parts.first + 1] + parts.skip(1).toList();
       }
-      if (k > 1) {
-        currTerm(n, k - 1, i);
-      }
-    }
-  }
-
-  void allUniqueParts(int n) {
-    final pl = List.filled(n, 0);
-    var k = 0;
-
-    pl[k] = n;
-
-    while(true) {
-      // print(pl.take(k + 1));
-      products.add(pl.take(k + 1).fold(1, (previousValue, element) => previousValue * element));
-      var remVal = 0;
-      while(k >= 0 && pl[k] == 1) {
-        remVal += pl[k];
-        k--;
-      }
-      if (k < 0) {
-        return;
-      }
-      pl[k]--;
-      remVal++;
-
-      while(remVal > pl[k]) {
-        pl[k + 1] = pl[k];
-        remVal -= pl[k];
-        k++;
-      }
-
-      pl[k+ 1] = remVal;
-      k++;
     }
   }
 }
