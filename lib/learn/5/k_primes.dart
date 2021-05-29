@@ -4,7 +4,7 @@ class KPrimes {
   List<int> countKPrimes(int k, int start, int end) {
     final list = List.generate(end - start + 1, (index) => start + index);
 
-    bool isKPrimes(int n) => isPrimes(k, n);
+    bool isKPrimes(int n) => primesK(k, n);
 
     return list.where(isKPrimes).toList();
   }
@@ -45,7 +45,7 @@ class KPrimes {
     return result;
   }
 
-  bool isPrimes(int k, int n) {
+  bool primesK(int k, int n) {
     var m = n;
     var result = 0;
     for (var number = 2; number <= m; number++) {

@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 typedef _ExpandFunction<int, T> = Iterable<T> Function(int sourceElement);
 
 class ExpandIterable<int, T> extends Iterable<T> {

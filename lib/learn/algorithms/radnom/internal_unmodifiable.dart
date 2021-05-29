@@ -128,7 +128,11 @@ abstract class UnmodifiableRandomListMixin implements List<int> {
 
   /// This operation is not supported by an unmodifiable list.
   @override
-  void fillRange(int start, int end, [int? fillValue]) {}
+  void fillRange(int start, int end, [int? fillValue]) {
+    throw UnsupportedError('Cannot modify an unmodifiable list');
+  }
+
+  
 }
 
 /// Abstract implementation of an unmodifiable list.
