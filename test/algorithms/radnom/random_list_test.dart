@@ -18,4 +18,13 @@ void main() {
     expect(randomList[index - 1], result);
   });
 
+  test('take event element from 20 ist size', () {
+    final randomIterable = RandomList(20);
+    final result = [4, 2, 8, 0, 4, 10, 18, 16];
+
+    final actual = randomIterable.where((element) => element.isEven).toList();
+
+    expect(actual, result);
+  });
+
 }
