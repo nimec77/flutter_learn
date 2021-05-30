@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:flutter_learn/learn/algorithms/radnom/internal_iterable.dart';
-import 'package:flutter_learn/learn/algorithms/radnom/internal_unmodifiable.dart';
-
+import 'internal_iterable.dart';
+import 'internal_unmodifiable.dart';
 import 'random_iterator.dart';
+import 'random_map.dart';
 
 class RandomList extends UnmodifiableRandomListBase {
   RandomList(this.max);
@@ -42,9 +42,6 @@ class RandomList extends UnmodifiableRandomListBase {
   }
 
   @override
-  int get hashCode => max.hashCode;
-
-  @override
   int get single {
     if (max == 0) {
       throw IterableElementError.noElement();
@@ -68,6 +65,12 @@ class RandomList extends UnmodifiableRandomListBase {
 
   @override
   List<int> toList({bool growable = false}) => this;
+
+  @override
+  Map<int, int> asMap() => RandomMap(max);
+
+  @override
+  int get hashCode => max.hashCode;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is RandomList && other.max == max;

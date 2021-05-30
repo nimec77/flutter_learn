@@ -5,10 +5,12 @@ class RandomIterator implements Iterator<int> {
 
   final int max;
 
-  int _count = 0;
+  int _count = -1;
 
   @override
-  int get current => _item(_count);
+  int get current {
+    return _item(_count);
+  }
 
   @override
   bool moveNext() => ++_count < max;

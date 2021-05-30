@@ -1,9 +1,10 @@
 import 'dart:collection';
 import 'dart:math';
 
-import 'package:flutter_learn/learn/algorithms/radnom/random_iterator.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/random_list.dart';
 
 import 'internal_iterable.dart';
+import 'random_iterator.dart';
 
 class RandomIterableAll implements Iterable<int> {
   RandomIterableAll(this.max);
@@ -231,17 +232,11 @@ class RandomIterableAll implements Iterable<int> {
     return TakeWhileIterable(this, test);
   }
 
-  // TODO: возможно надо будет переопределить на RandomList
   @override
-  List<int> toList({bool growable = true}) {
-    return List<int>.of(this, growable: growable);
-  }
+  List<int> toList({bool growable = false}) => RandomList(max);
 
-  // TODO: возможно надо будет переопределить на RandomSet
   @override
-  Set<int> toSet() {
-    return Set<int>.of(this);
-  }
+  Set<int> toSet() => Set<int>.of(this);
 
   @override
   Iterable<int> where(bool Function(int element) test) {

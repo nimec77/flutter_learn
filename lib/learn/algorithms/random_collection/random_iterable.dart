@@ -1,10 +1,10 @@
 import 'dart:collection';
 import 'dart:math';
 
-import 'package:flutter_learn/learn/algorithms/radnom/random_iterator.dart';
-import 'package:flutter_learn/learn/algorithms/radnom/random_list.dart';
 
 import 'internal_iterable.dart';
+import 'random_iterator.dart';
+import 'random_list.dart';
 
 class RandomIterable extends IterableBase<int> {
   RandomIterable(this.max);
