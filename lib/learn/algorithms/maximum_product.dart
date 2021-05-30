@@ -78,8 +78,6 @@ class MaximumProduct {
         product *= nProduct;
         nIndex += 2;
       }
-      // final p1 = pIndex;
-      // final n1 = length - (nIndex + 1);
       remaining = l - nIndex - length + pIndex + 1;
     }
     return product;
