@@ -21,9 +21,7 @@ class RandomIterableAll implements Iterable<int> {
   }
 
   @override
-  Iterable<R> cast<R>() {
-    return Iterable.castFrom<int, R>(this);
-  }
+  Iterable<R> cast<R>() => Iterable.castFrom<int, R>(this);
 
   @override
   bool contains(Object? element) {
@@ -54,9 +52,7 @@ class RandomIterableAll implements Iterable<int> {
   }
 
   @override
-  Iterable<T> expand<T>(Iterable<T> Function(int element) toElements) {
-    return ExpandIterable<int, T>(this, toElements);
-  }
+  Iterable<T> expand<T>(Iterable<T> Function(int element) toElements) => ExpandIterable<int, T>(this, toElements);
 
   @override
   int get first {
