@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter_learn/learn/6/disease_spread.dart';
 import 'package:flutter_test/flutter_test.dart';
 
