@@ -1,15 +1,21 @@
 import 'dart:collection';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_learn/learn/algorithms/random_collection/random_list.dart';
 
 import 'internal_iterable.dart';
 import 'random_iterator.dart';
 
 class RandomIterableAll implements Iterable<int> {
-  RandomIterableAll(this.max);
+  RandomIterableAll(this.length, {int? max}) : _max = max ?? length;
 
-  final int max;
+  @override
+  final int length;
+
+  final int _max;
+
+  int get max => _max;
 
   @override
   bool any(bool Function(int element) test) {
@@ -36,8 +42,8 @@ class RandomIterableAll implements Iterable<int> {
 
   @override
   int elementAt(int index) {
-    if (index >= max) {
-      throw RangeError.index(index, this, 'index', null, max);
+    if (index >= length) {
+      throw RangeError.index(index, this, 'index', null, length);
     }
     return _item(index);
   }
@@ -57,7 +63,7 @@ class RandomIterableAll implements Iterable<int> {
 
   @override
   int get first {
-    if (max == 0) {
+    if (length == 0) {
       throw IterableElementError.noElement();
     }
     return _item(0);
@@ -102,13 +108,13 @@ class RandomIterableAll implements Iterable<int> {
   }
 
   @override
-  bool get isEmpty => max == 0;
+  bool get isEmpty => length == 0;
 
   @override
-  bool get isNotEmpty => max != 0;
+  bool get isNotEmpty => length != 0;
 
   @override
-  Iterator<int> get iterator => RandomIterator(max);
+  Iterator<int> get iterator => RandomIterator(length, max: _max);
 
   @override
   String join([String separator = '']) {
@@ -132,7 +138,12 @@ class RandomIterableAll implements Iterable<int> {
   }
 
   @override
-  int get last => _item(max > 1 ? max - 1 : max);
+  int get last {
+    if (length == 0) {
+      throw IterableElementError.noElement();
+    }
+    return _item(length - 1);
+  }
 
   @override
   int lastWhere(bool Function(int element) test, {int Function()? orElse}) {
@@ -156,9 +167,6 @@ class RandomIterableAll implements Iterable<int> {
   }
 
   @override
-  int get length => max;
-
-  @override
   Iterable<T> map<T>(T Function(int e) toElement) {
     return MappedIterable<T>(this, toElement);
   }
@@ -179,7 +187,7 @@ class RandomIterableAll implements Iterable<int> {
 
   @override
   int get single {
-    if (max == 0) {
+    if (length == 0) {
       throw IterableElementError.noElement();
     }
     final result = iterator.current;
@@ -233,7 +241,7 @@ class RandomIterableAll implements Iterable<int> {
   }
 
   @override
-  List<int> toList({bool growable = false}) => RandomList(max);
+  List<int> toList({bool growable = false}) => RandomList(length, max: _max);
 
   @override
   Set<int> toSet() => Set<int>.of(this);
@@ -249,19 +257,16 @@ class RandomIterableAll implements Iterable<int> {
   }
 
   @override
-  int get hashCode {
-    return max.hashCode;
-  }
+  int get hashCode => hashValues(length, _max);
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) || other is RandomIterableAll && other.max == max;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) || other is RandomIterableAll && other.length == length && other.max == _max;
 
   @override
   String toString() => IterableBase.iterableToShortString(this);
 
   int _item(int index) {
-    return Random(index).nextInt(max);
+    return Random(index).nextInt(length);
   }
 }

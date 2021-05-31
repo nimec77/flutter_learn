@@ -1,25 +1,28 @@
 import 'dart:collection';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 
 import 'internal_iterable.dart';
 import 'random_iterator.dart';
 import 'random_list.dart';
 
 class RandomIterable extends IterableBase<int> {
-  RandomIterable(this.max);
-
-  final int max;
+  RandomIterable(this.length, {int? max}) : _max = max ?? length;
 
   @override
-  Iterator<int> get iterator => RandomIterator(max);
+  final int length;
+
+  final int _max;
+
+  int get max => _max;
 
   @override
-  int get length => max;
+  Iterator<int> get iterator => RandomIterator(length, max: _max);
 
   @override
   int get first {
-    if (max == 0) {
+    if (length == 0) {
       throw IterableElementError.noElement();
     }
     return _item(0);
@@ -27,18 +30,18 @@ class RandomIterable extends IterableBase<int> {
 
   @override
   int get last {
-    if (max == 0) {
+    if (length == 0) {
       throw IterableElementError.noElement();
     }
-    return _item(max - 1);
+    return _item(length - 1);
   }
 
   @override
   int get single {
-    if (max == 0) {
+    if (length == 0) {
       throw IterableElementError.noElement();
     }
-    if (max > 1) {
+    if (length > 1) {
       throw IterableElementError.tooMany();
     }
 
@@ -48,7 +51,7 @@ class RandomIterable extends IterableBase<int> {
   @override
   int elementAt(int index) {
     RangeError.checkNotNegative(index, 'index');
-    if (index >= max) {
+    if (index >= length) {
       throw RangeError.index(index, this, 'index');
     }
 
@@ -56,13 +59,14 @@ class RandomIterable extends IterableBase<int> {
   }
 
   @override
-  List<int> toList({bool growable = false}) => RandomList(max);
+  List<int> toList({bool growable = false}) => RandomList(length, max: _max);
 
   @override
-  int get hashCode => max.hashCode;
+  int get hashCode => hashValues(length, _max);
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is RandomIterable && other.max == max;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is RandomIterable && other.length == length && other.max == _max;
 
-  int _item(int index) => Random(index).nextInt(max);
+  int _item(int index) => Random(index).nextInt(_max);
 }

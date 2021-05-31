@@ -1,52 +1,56 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
+
 import 'internal_iterable.dart';
 import 'internal_unmodifiable.dart';
 import 'random_iterator.dart';
 import 'random_map.dart';
 
 class RandomList extends UnmodifiableRandomListBase {
-  RandomList(this.max);
+  RandomList(this.length, {int? max}) : _max = max ?? length;
 
-  final int max;
+  @override
+  final int length;
+
+  final int _max;
+
+  int get max => _max;
 
   @override
   int operator [](int index) => elementAt(index);
 
   @override
-  Iterator<int> get iterator => RandomIterator(max);
-
-  @override
-  int get length => max;
+  Iterator<int> get iterator => RandomIterator(length, max: _max);
 
   @override
   int get first {
-    if (max == 0) {
+    if (length == 0) {
       throw IterableElementError.noElement();
     }
     return _item(0);
   }
 
   @override
-  bool get isEmpty => max == 0;
+  bool get isEmpty => length == 0;
 
   @override
-  bool get isNotEmpty => max != 0;
+  bool get isNotEmpty => length != 0;
 
   @override
   int get last {
-    if (max == 0) {
+    if (length == 0) {
       throw IterableElementError.noElement();
     }
-    return _item(max - 1);
+    return _item(length - 1);
   }
 
   @override
   int get single {
-    if (max == 0) {
+    if (length == 0) {
       throw IterableElementError.noElement();
     }
-    if (max > 1) {
+    if (length > 1) {
       throw IterableElementError.tooMany();
     }
 
@@ -56,7 +60,7 @@ class RandomList extends UnmodifiableRandomListBase {
   @override
   int elementAt(int index) {
     RangeError.checkNotNegative(index, 'index');
-    if (index >= max) {
+    if (index >= length) {
       throw RangeError.index(index, this, 'index');
     }
 
@@ -67,13 +71,14 @@ class RandomList extends UnmodifiableRandomListBase {
   List<int> toList({bool growable = false}) => this;
 
   @override
-  Map<int, int> asMap() => RandomMap(max);
+  Map<int, int> asMap() => RandomMap(length, max: _max);
 
   @override
-  int get hashCode => max.hashCode;
+  int get hashCode => hashValues(length, _max);
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is RandomList && other.max == max;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is RandomList && other.length == length && other.max == _max;
 
-  int _item(int index) => Random(index).nextInt(max);
+  int _item(int index) => Random(index).nextInt(_max);
 }

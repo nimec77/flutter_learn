@@ -1,11 +1,16 @@
 import 'dart:math';
 
-class RandomIterator implements Iterator<int> {
-  RandomIterator(this.max);
+import 'package:flutter/cupertino.dart';
 
-  final int max;
+class RandomIterator implements Iterator<int> {
+  RandomIterator(this.length, {int? max}) : _max = max ?? length;
+
+  final int length;
+  final int _max;
 
   int _count = -1;
+
+  int get max => _max;
 
   @override
   int get current {
@@ -13,13 +18,14 @@ class RandomIterator implements Iterator<int> {
   }
 
   @override
-  bool moveNext() => ++_count < max;
+  bool moveNext() => ++_count < length;
 
   @override
-  int get hashCode => max.hashCode;
+  int get hashCode => hashValues(length, _max);
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is RandomIterator && other.max == max;
+  bool operator ==(Object other) =>
+      identical(this, other) || other is RandomIterator && other.length == length && other.max == _max;
 
-  int _item(int index) => Random(index).nextInt(max);
+  int _item(int index) => Random(index).nextInt(_max);
 }
