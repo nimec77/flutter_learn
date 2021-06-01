@@ -21,11 +21,11 @@ void main() {
       ..shuffle(random);
   });
 
-  // benchmark('find duplicate number test by HashMap', () {
-  //   findDuplicateNumber.findDuplicateByHash(nums);
-  // });
-
-  benchmark("find duplicate number test by Floyd's Tortoise and Hare", () {
-    findDuplicateNumber.findDuplicateByTortoiseAndHare(nums);
+  benchmark('find duplicate number test by HashMap', () {
+    findDuplicateNumber.findDuplicateByHash(nums);
   });
+
+  // benchmark("find duplicate number test by Floyd's Tortoise and Hare", () {
+  //   findDuplicateNumber.findDuplicateByTortoiseAndHare(nums);
+  // });
 }
