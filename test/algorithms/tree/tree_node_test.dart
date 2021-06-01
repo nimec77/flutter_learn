@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   late final TreeTravels treeTravels;
-  late final TreeNode tree;
+  late final TreeNode<int> tree;
   const resultPreOrder = [2, 7, 2, 6, 5, 11, 5, 9, 4];
   const resultInOrder = [2, 7, 5, 6, 11, 2, 5, 4, 9];
   const resultPostOrder = [2, 5, 11, 6, 7, 4, 9, 5, 2];

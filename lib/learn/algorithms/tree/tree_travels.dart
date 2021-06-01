@@ -3,9 +3,9 @@ import 'dart:collection';
 import 'package:flutter_learn/learn/algorithms/tree/tree_node.dart';
 
 class TreeTravels {
-  List<int> travelPreOrderRecursive(TreeNode tree) => _preOrderRecursive(tree).toList();
+  List<int> travelPreOrderRecursive(TreeNode<int> tree) => _preOrderRecursive(tree).toList();
 
-  Iterable<int> _preOrderRecursive(TreeNode? node) sync* {
+  Iterable<int> _preOrderRecursive(TreeNode<int>? node) sync* {
     if (node == null) {
       return;
     }
@@ -14,10 +14,10 @@ class TreeTravels {
     yield* _preOrderRecursive(node.right);
   }
 
-  List<int> travelPreOrderIterative(TreeNode tree) => _preOrderIterative(tree).toList();
+  List<int> travelPreOrderIterative(TreeNode<int> tree) => _preOrderIterative(tree).toList();
 
-  Iterable<int> _preOrderIterative(TreeNode treeNode) sync* {
-    final stack = Queue<TreeNode>()..add(treeNode);
+  Iterable<int> _preOrderIterative(TreeNode<int> treeNode) sync* {
+    final stack = Queue<TreeNode<int>>()..add(treeNode);
 
     while (stack.isNotEmpty) {
       final node = stack.removeLast();
@@ -31,9 +31,9 @@ class TreeTravels {
     }
   }
 
-  List<int> travelInOrderRecursive(TreeNode tree) => _inOrderRecursive(tree).toList();
+  List<int> travelInOrderRecursive(TreeNode<int> tree) => _inOrderRecursive(tree).toList();
 
-  Iterable<int> _inOrderRecursive(TreeNode? node) sync* {
+  Iterable<int> _inOrderRecursive(TreeNode<int>? node) sync* {
     if (node == null) {
       return;
     }
@@ -42,11 +42,11 @@ class TreeTravels {
     yield* _inOrderRecursive(node.right);
   }
 
-  List<int> travelInOrderIterative(TreeNode tree) => _inOrderIterative(tree).toList();
+  List<int> travelInOrderIterative(TreeNode<int> tree) => _inOrderIterative(tree).toList();
 
-  Iterable<int> _inOrderIterative(TreeNode tree) sync* {
-    final stack = Queue<TreeNode>();
-    TreeNode? node = tree;
+  Iterable<int> _inOrderIterative(TreeNode<int> tree) sync* {
+    final stack = Queue<TreeNode<int>>();
+    TreeNode<int>? node = tree;
     while (stack.isNotEmpty || node != null) {
       if (node != null) {
         stack.add(node);
@@ -59,9 +59,9 @@ class TreeTravels {
     }
   }
 
-  List<int> travelPostOrderRecursive(TreeNode tree) => _postOrderRecursive(tree).toList();
+  List<int> travelPostOrderRecursive(TreeNode<int> tree) => _postOrderRecursive(tree).toList();
 
-  Iterable<int> _postOrderRecursive(TreeNode? node) sync* {
+  Iterable<int> _postOrderRecursive(TreeNode<int>? node) sync* {
     if (node == null) {
       return;
     }
@@ -70,11 +70,11 @@ class TreeTravels {
     yield node.value;
   }
 
-  List<int> travelPostOrderIterative(TreeNode tree) => _postOrderIterative(tree).toList();
+  List<int> travelPostOrderIterative(TreeNode<int> tree) => _postOrderIterative(tree).toList();
 
-  Iterable<int> _postOrderIterative(TreeNode tree) sync* {
-    final stack1 = Queue<TreeNode>()..add(tree);
-    final list2 = <TreeNode>[];
+  Iterable<int> _postOrderIterative(TreeNode<int> tree) sync* {
+    final stack1 = Queue<TreeNode<int>>()..add(tree);
+    final list2 = <TreeNode<int>>[];
 
     while (stack1.isNotEmpty) {
       final node = stack1.removeLast();
@@ -93,10 +93,10 @@ class TreeTravels {
     }
   }
 
-  List<int> travelLevelOrderIterative(TreeNode tree) => _levelOrderIterative(tree).toList();
+  List<int> travelLevelOrderIterative(TreeNode<int> tree) => _levelOrderIterative(tree).toList();
 
-  Iterable<int> _levelOrderIterative(TreeNode tree) sync* {
-    final queue = Queue<TreeNode>()..add(tree);
+  Iterable<int> _levelOrderIterative(TreeNode<int> tree) sync* {
+    final queue = Queue<TreeNode<int>>()..add(tree);
 
     while(queue.isNotEmpty) {
       final node = queue.removeFirst();

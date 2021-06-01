@@ -1,9 +1,10 @@
-class TreeNode {
+class TreeNode<T> {
   TreeNode(this.value);
 
-  final int value;
-  TreeNode? left;
-  TreeNode? right;
+  final T value;
+
+  TreeNode<T>? left;
+  TreeNode<T>? right;
 
   @override
   int get hashCode => value.hashCode;
@@ -12,4 +13,7 @@ class TreeNode {
   bool operator ==(Object other) {
     return identical(this, other) || other is TreeNode && other.value == value;
   }
+
+  @override
+  String toString() => 'Node($value)';
 }
