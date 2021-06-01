@@ -22,12 +22,10 @@ void main() {
 
   group('fixed tests', () {
     final piApproximation = PiApproximation();
-    // test('Test', () {
-    //   piApproximation.iterPi(0.1);
-    // });
     assertFuzzy(0.1, piApproximation.iterPi(0.1), [10, '3.0418396189']);
     assertFuzzy(0.01, piApproximation.iterPi(0.01), [100, '3.1315929036']);
     assertFuzzy(0.001, piApproximation.iterPi(0.001), [1000, '3.1405926538']);
     assertFuzzy(0.0001, piApproximation.iterPi(0.0001), [10000, '3.1414926536']);
   });
+
 }

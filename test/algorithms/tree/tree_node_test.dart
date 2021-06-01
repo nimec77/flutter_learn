@@ -1,12 +1,17 @@
-import 'package:flutter_learn/learn/algorithms/tree/tree_in_order.dart';
 import 'package:flutter_learn/learn/algorithms/tree/tree_node.dart';
+import 'package:flutter_learn/learn/algorithms/tree/tree_travels.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
+  late final TreeTravels treeTravels;
   late final TreeNode tree;
-  const result = [2, 7, 5, 6, 11, 2, 5, 4, 9];
+  const resultPreOrder = [2, 7, 2, 6, 5, 11, 5, 9, 4];
+  const resultInOrder = [2, 7, 5, 6, 11, 2, 5, 4, 9];
+  const resultPostOrder = [2, 5, 11, 6, 7, 4, 9, 5, 2];
+  const resultLevelOrder = [2, 7, 5, 2, 6, 9, 5, 11, 4];
 
   setUpAll(() {
+    treeTravels = TreeTravels();
     final node2 = TreeNode(2);
     final node7 = TreeNode(7);
     final node6 = TreeNode(6);
@@ -25,18 +30,41 @@ void main() {
       ..left = node7;
 
     tree = node2;
-
   });
 
-  test('In order travel recursive', () {
-    final treeInOrder = TreeInOrder();
+  group('Tree pre-order travels', () {
+    test('Pre-order travel recursive', () {
+      expect(treeTravels.travelPreOrderRecursive(tree), resultPreOrder);
+    });
 
-    expect(treeInOrder.travelRecursive(tree), result);
+    test('Pre-order travel iterative', () {
+      expect(treeTravels.travelPreOrderIterative(tree), resultPreOrder);
+    });
   });
 
-  test('In order travel iterative', () {
-    final treeInOrder = TreeInOrder();
+  group('Tree in-order travel', () {
+    test('In-order travel recursive', () {
+      expect(treeTravels.travelInOrderRecursive(tree), resultInOrder);
+    });
 
-    expect(treeInOrder.travelIterative(tree), result);
+    test('In-order travel iterative', () {
+      expect(treeTravels.travelInOrderIterative(tree), resultInOrder);
+    });
+  });
+
+  group('Tree post-order travels', () {
+    test('Post-order travel recursive', () {
+      expect(treeTravels.travelPostOrderRecursive(tree), resultPostOrder);
+    });
+
+    test('Post-order travel iterative', () {
+      expect(treeTravels.travelPostOrderIterative(tree), resultPostOrder);
+    });
+  });
+
+  group('Level-order travel', () {
+    test('Level-order travel iterative', () {
+      expect(treeTravels.travelLevelOrderIterative(tree), resultLevelOrder);
+    });
   });
 }
