@@ -1,3 +1,4 @@
+import 'package:flutter_learn/learn/algorithms/tree/binary_node.dart';
 import 'package:flutter_learn/learn/algorithms/tree/tree_node.dart';
 import 'package:flutter_learn/learn/algorithms/tree/tree_travels.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,19 +12,19 @@ void main() {
   const resultLevelOrder = [2, 7, 5, 2, 6, 9, 5, 11, 4];
 
   setUpAll(() {
-    treeTravels = TreeTravels();
-    final node2 = TreeNode(2);
-    final node7 = TreeNode(7);
-    final node6 = TreeNode(6);
-    final node5 = TreeNode(5);
-    final node9 = TreeNode(9);
+    treeTravels = TreeTravels<int, TreeNode<int>>();
+    final node2 = BinaryNode(2);
+    final node7 = BinaryNode(7);
+    final node6 = BinaryNode(6);
+    final node5 = BinaryNode(5);
+    final node9 = BinaryNode(9);
     node6
-      ..right = TreeNode(11)
-      ..left = TreeNode(5);
+      ..right = BinaryNode(11)
+      ..left = BinaryNode(5);
     node7
       ..right = node6
-      ..left = TreeNode(2);
-    node9.left = TreeNode(4);
+      ..left = BinaryNode(2);
+    node9.left = BinaryNode(4);
     node5.right = node9;
     node2
       ..right = node5
