@@ -110,4 +110,12 @@ class TreeTravels<T, S extends TreeNode<T>> {
       }
     }
   }
+
+  T maximum(TreeNode<T> tree) {
+    var node = tree;
+    while(node.right != null) {
+      node = node.right!;
+    }
+    return node.value;
+  }
 }

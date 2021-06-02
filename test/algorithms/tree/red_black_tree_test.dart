@@ -19,5 +19,8 @@ void main() {
 
     final actual = treeTravel.travelPreOrderRecursive(redBlackTree.root);
     print(actual);
+
+    final max = treeTravel.maximum(redBlackTree.root);
+    print(max);
   });
 }
