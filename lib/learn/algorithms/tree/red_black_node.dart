@@ -1,11 +1,15 @@
 import 'tree_node.dart';
 
+extension RedBlackCast<T extends Comparable<T>> on TreeNode<T>? {
+  RedBlackNode<T>? cast() =>  this != null ? this as RedBlackNode<T> : null;
+}
+
 enum NodeColor {
   black,
   red,
 }
 
-class RedBlackNode<T extends Comparable<T>> implements TreeNode<T> {
+class RedBlackNode<T extends Comparable<T>> implements TreeNode<T>  {
   RedBlackNode(this.value, {this.color = NodeColor.red});
 
   @override
@@ -22,7 +26,7 @@ class RedBlackNode<T extends Comparable<T>> implements TreeNode<T> {
 
   @override
   set left(TreeNode<T>? node) {
-    _left = node != null ? node as RedBlackNode<T> : null;
+    _left = node.cast();
   }
 
   RedBlackNode<T>? _right;
@@ -32,7 +36,7 @@ class RedBlackNode<T extends Comparable<T>> implements TreeNode<T> {
 
   @override
   set right(TreeNode<T>? node) {
-    _right = node != null ? node as RedBlackNode<T> : null;
+    _right = node.cast();
   }
 
   @override

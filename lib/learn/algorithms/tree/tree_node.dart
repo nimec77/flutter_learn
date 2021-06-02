@@ -1,5 +1,5 @@
 
-abstract class TreeNode<T> {
+class TreeNode<T> {
   TreeNode(this.value);
 
   final T value;
