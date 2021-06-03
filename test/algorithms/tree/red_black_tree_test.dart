@@ -30,7 +30,9 @@ void main() {
     });
 
     test('Delete from Red-black tree', () {
+      print(tree.printTree());
       tree.delete(9);
+      print(tree.printTree());
 
       expect(tree.travelPreOrderIterative(), resultDelete);
     });

@@ -191,9 +191,9 @@ class TreeBinary<T extends Comparable<T>> {
     const pointerRight = '└──R:';
     final pointerLeft = root.right != null ? '├──L:' : '└──L:';
 
-    final result = [root.value.toString()] +
-        _printHelper(root.left, '', pointerLeft, root.right != null).toList() +
-        _printHelper(root.right, '', pointerRight, false).toList();
+    final result = [root.value.toString()]
+        .followedBy(_printHelper(root.left, '', pointerLeft, root.right != null))
+        .followedBy(_printHelper(root.right, '', pointerRight, false));
 
     return result.join();
   }
