@@ -9,7 +9,6 @@ void main() {
   const resultInOrder = [2, 7, 5, 6, 11, 2, 5, 4, 9];
   const resultPostOrder = [2, 5, 11, 6, 7, 4, 9, 5, 2];
   const resultLevelOrder = [2, 7, 5, 2, 6, 9, 5, 11, 4];
-  const resultMaximum = 11;
 
   setUpAll(() {
     final node2 = TreeNode(2);
@@ -77,5 +76,19 @@ void main() {
         expect(treeBinary.minimum(), 2);
       });
     });
+
+    group('Ascending sequence tests', () {
+      test('Adding an ascending sequence', () {
+        final tree = TreeBinary<num>();
+
+        for (final element in List.generate(10, (index) => index)) {
+          tree.insert(element);
+        }
+
+        // ignore: avoid_print
+        print(tree.printTree());
+      });
+    });
+
   });
 }

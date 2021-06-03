@@ -1,10 +1,16 @@
+import 'dart:math' as math;
+
+import 'package:flutter_learn/learn/algorithms/random_collection/random_iterable.dart';
 import 'package:flutter_learn/learn/algorithms/tree/red_black_tree.dart';
-import 'package:flutter_learn/learn/algorithms/tree/tree_binary.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('Insert into Red-black tree', () {
-    final redBlackTree = RedBlackTree<num>()
+  final tree = RedBlackTree<num>();
+  const resultPreOrder = [6, 2, 2, 5, 4, 9, 7, 11];
+
+  setUp(() {
+    tree
+      ..clear()
       ..insert(2)
       ..insert(7)
       ..insert(6)
@@ -13,13 +19,106 @@ void main() {
       ..insert(5)
       ..insert(4)
       ..insert(9);
+  });
 
-    final tree = TreeBinary<num>();
+  group('Test insert and delete from tree', () {
+    test('Insert into Red-black tree', () {
+      final actual = tree.travelPreOrderRecursive();
 
-    final actual = tree.travelPreOrderRecursive();
-    print(actual);
+      expect(actual, resultPreOrder);
+    });
 
-    final max = tree.maximum();
-    print(max);
+    test('Delete from Red-black tree', () {
+      print(tree.printTree());
+
+      tree.delete(9);
+      print(tree.printTree());
+    });
+  });
+
+  group('Test search, min and max', () {
+    test('Find element in tree', () {
+      const value = 9;
+      final actual = tree.searchTree(value);
+
+      expect(actual.value, value);
+    });
+
+    test('Maximum in tree', () {
+      const max = 11;
+      final actual = tree.maximum();
+
+      expect(actual, max);
+    });
+
+    test('Minimum in tree', () {
+      const min = 2;
+      final actual = tree.minimum();
+
+      expect(actual, min);
+    });
+  });
+
+  group('Ascending sequence tests', () {
+    final length = math.pow(10, 7).toInt();
+    final ascendTree = RedBlackTree<num>();
+    for (final element in List.generate(length, (index) => index)) {
+      ascendTree.insert(element);
+    }
+
+    test('Maximum in tree', () {
+      final actual = ascendTree.maximum();
+
+      expect(actual, length - 1);
+    });
+
+    test('Minimum in tree', () {
+      final actual = ascendTree.minimum();
+
+      expect(actual, 0);
+    });
+
+    test('Find random element in tree', () {
+      final result = math.Random(42).nextInt(length);
+      final actual = ascendTree.searchTree(result);
+
+      expect(actual.value, result);
+    });
+  });
+
+  group('Random sequence tests', () {
+    final length = math.pow(10, 1).toInt();
+    final randomTree = RedBlackTree<num>();
+    final resultRandom = math.Random(42).nextInt(length);
+    var resultMax = 0;
+    var resultMin = length;
+    for (final element in RandomIterable(length)) {
+      if (resultMax < element) {
+        resultMax = element;
+      }
+      if (resultMin > element) {
+        resultMin = element;
+      }
+      randomTree.insert(element);
+    }
+
+    test('Maximum in tree', () {
+      final actual = randomTree.maximum();
+
+      expect(actual, resultMax);
+    });
+
+    test('Minimum in tree', () {
+      final actual = randomTree.minimum();
+
+      expect(actual, resultMin);
+    });
+
+    test('Find random element in tree', () {
+      final actual = randomTree.searchTree(resultRandom);
+
+      expect(actual.value, resultRandom);
+    });
+
   });
 }

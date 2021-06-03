@@ -72,7 +72,7 @@ class TreeBinary<T extends Comparable<T>> {
     }
   }
 
-  List<T> travelInOrderRecursive() => _inOrderRecursive(_root).toList();
+  List<T> travelInOrderRecursive() => _inOrderRecursive(root).toList();
 
   Iterable<T> _inOrderRecursive(TreeNode<T>? node) sync* {
     if (node == null) {
@@ -83,7 +83,7 @@ class TreeBinary<T extends Comparable<T>> {
     yield* _inOrderRecursive(node.right);
   }
 
-  List<T> travelInOrderIterative() => _inOrderIterative(_root!).toList();
+  List<T> travelInOrderIterative() => _inOrderIterative(root).toList();
 
   Iterable<T> _inOrderIterative(TreeNode<T> tree) sync* {
     final stack = Queue<TreeNode<T>>();
@@ -100,7 +100,7 @@ class TreeBinary<T extends Comparable<T>> {
     }
   }
 
-  List<T> travelPostOrderRecursive() => _postOrderRecursive(_root).toList();
+  List<T> travelPostOrderRecursive() => _postOrderRecursive(root).toList();
 
   Iterable<T> _postOrderRecursive(TreeNode<T>? node) sync* {
     if (node == null) {
@@ -111,7 +111,7 @@ class TreeBinary<T extends Comparable<T>> {
     yield node.value;
   }
 
-  List<T> travelPostOrderIterative() => _postOrderIterative(_root!).toList();
+  List<T> travelPostOrderIterative() => _postOrderIterative(root).toList();
 
   Iterable<T> _postOrderIterative(TreeNode<T> tree) sync* {
     final stack1 = Queue<TreeNode<T>>()..add(tree);
@@ -134,7 +134,7 @@ class TreeBinary<T extends Comparable<T>> {
     }
   }
 
-  List<T> travelLevelOrderIterative() => _levelOrderIterative(_root!).toList();
+  List<T> travelLevelOrderIterative() => _levelOrderIterative(root).toList();
 
   Iterable<T> _levelOrderIterative(TreeNode<T> tree) sync* {
     final queue = Queue<TreeNode<T>>()..add(tree);
@@ -153,9 +153,8 @@ class TreeBinary<T extends Comparable<T>> {
   }
 
   T maximum() {
-    TreeElementError.checkNotEmpty(this);
-    var node = _root;
-    while (node!.right != null) {
+    var node = root;
+    while (node.right != null) {
       node = node.right!;
     }
     return node.value;
@@ -163,9 +162,9 @@ class TreeBinary<T extends Comparable<T>> {
 
   T minimum() {
     TreeElementError.checkNotEmpty(this);
-    var node = _root;
-    while (node!.left != null) {
-      node = node.left;
+    var node = root;
+    while (node.left != null) {
+      node = node.left!;
     }
     return node.value;
   }
@@ -189,33 +188,107 @@ class TreeBinary<T extends Comparable<T>> {
   }
 
   String printTree() {
-    final sb = StringBuffer()..write(root.value);
-    const pointerRight = '└──';
-    final pointerLeft = root.right != null ? '├──' : '└──';
+    const pointerRight = '└──R:';
+    final pointerLeft = root.right != null ? '├──L:' : '└──L:';
 
-    _printHelper(root.left, sb, '', pointerLeft, root.right != null);
-    _printHelper(root.right, sb, '', pointerRight, false);
+    final result = [root.value.toString()] +
+        _printHelper(root.left, '', pointerLeft, root.right != null).toList() +
+        _printHelper(root.right, '', pointerRight, false).toList();
 
-    return sb.toString();
+    return result.join();
   }
 
-  void _printHelper(TreeNode<T>? node, StringBuffer sb, String padding, String pointer, bool hasRightSibling) {
-    if (node != null) {
-      sb..write('\n')..write(padding)..write(pointer)..write(node.value);
+  Iterable<String> _printHelper(TreeNode<T>? node, String padding, String pointer, bool hasRightSibling) sync* {
+    if (node == null) {
+      return;
+    }
+    yield ('\n');
+    yield (padding);
+    yield (pointer);
+    yield (node.value.toString());
 
-      final paddingBuffer = StringBuffer(padding);
-      if (hasRightSibling) {
-        paddingBuffer.write('|  ');
+    final paddingBuffer = StringBuffer(padding);
+    if (hasRightSibling) {
+      paddingBuffer.write('|  ');
+    } else {
+      paddingBuffer.write('   ');
+    }
+
+    final paddingForBoth = paddingBuffer.toString();
+    const pointerRight = '└──R:';
+    final pointerLeft = node.right != null ? '├──L:' : '└──L:';
+
+    yield* _printHelper(node.left, paddingForBoth, pointerLeft, node.right != null);
+    yield* _printHelper(node.right, paddingForBoth, pointerRight, false);
+  }
+
+  void clear() {
+    _root = null;
+  }
+
+  void delete(T value) {
+    if (root.left == null && root.right == null) {
+      if (root.value == value) {
+        _root = null;
+        return;
       } else {
-        paddingBuffer.write('   ');
+        throw TreeElementError.noElement();
       }
+    }
+    final q = Queue<TreeNode<T>>()..add(root);
+    TreeNode<T>? temp, keyNode;
 
-      final paddingForBoth = paddingBuffer.toString();
-      const pointerRight = '└──';
-      final pointerLeft = node.right != null ? '├──' : '└──';
+    while (q.isNotEmpty) {
+      temp = q.removeLast();
 
-      _printHelper(node.left, sb, paddingForBoth, pointerLeft, node.right != null);
-      _printHelper(node.right, sb, paddingForBoth, pointerRight, false);
+      if (temp.value == value) {
+        keyNode = temp;
+      }
+      if (temp.left != null) {
+        q.add(temp.left!);
+      }
+      if (temp.right != null) {
+        q.add(temp.right!);
+      }
+    }
+
+    if (keyNode != null) {
+      final xNode = TreeNode(temp!.value);
+      _deleteDeepest(temp);
+      xNode
+        ..right = keyNode.right
+        ..left = keyNode.left;
+      keyNode = null;
+    }
+  }
+
+  void _deleteDeepest(TreeNode<T> delNode) {
+    final q = Queue<TreeNode<T>>()..add(root);
+
+    TreeNode<T>? temp;
+
+    while (q.isNotEmpty) {
+      temp = q.removeLast();
+      if (temp == delNode) {
+        temp = null;
+        return;
+      }
+      if (temp.right != null) {
+        if (temp.right == delNode) {
+          temp.right = null;
+          return;
+        } else {
+          q.add(temp.right!);
+        }
+      }
+      if (temp.left != null) {
+        if (temp.left == delNode) {
+          temp.left = null;
+          return;
+        } else {
+          q.add(temp.left!);
+        }
+      }
     }
   }
 }
