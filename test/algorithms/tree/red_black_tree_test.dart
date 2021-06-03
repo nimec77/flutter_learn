@@ -7,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   final tree = RedBlackTree<num>();
   const resultPreOrder = [6, 2, 2, 5, 4, 9, 7, 11];
+  const resultDelete = [6, 2, 2, 5, 4, 11, 7];
 
   setUp(() {
     tree
@@ -29,10 +30,9 @@ void main() {
     });
 
     test('Delete from Red-black tree', () {
-      print(tree.printTree());
-
       tree.delete(9);
-      print(tree.printTree());
+
+      expect(tree.travelPreOrderIterative(), resultDelete);
     });
   });
 
@@ -119,6 +119,5 @@ void main() {
 
       expect(actual.value, resultRandom);
     });
-
   });
 }
