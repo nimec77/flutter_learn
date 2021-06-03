@@ -1,6 +1,7 @@
 import 'package:flutter_learn/learn/algorithms/tree/red_black_node.dart';
 
 import 'red_black_helper.dart';
+import 'tree_binary.dart';
 
 class RedBlackTree<T extends Comparable<T>> {
   RedBlackTree({RedBlackNode<T>? root}) : _root = root;
@@ -60,31 +61,6 @@ class RedBlackTree<T extends Comparable<T>> {
     y.right = x;
     x.parent = y;
   }
-
-  // void insert(T value) {
-  //   final node = RedBlackNode(value);
-  //   if (isEmpty) {
-  //     _root = node;
-  //   } else {
-  //     var p = _root;
-  //     RedBlackNode<T>? q;
-  //     while (p != null) {
-  //       q = p;
-  //       if (p.value.compareTo(node.value) == -1) {
-  //         p = p.right;
-  //       } else {
-  //         p = p.left;
-  //       }
-  //     }
-  //     node.parent = q;
-  //     if (q!.value.compareTo(node.value) == -1) {
-  //       q.right = node;
-  //     } else {
-  //       q.left = node;
-  //     }
-  //   }
-  //   _insertCase1(node);
-  // }
 
   void insert(T value) {
     final node = RedBlackNode<T>(value);
@@ -221,14 +197,4 @@ class RedBlackTree<T extends Comparable<T>> {
       leftRotate(g);
     }
   }
-}
-
-abstract class TreeElementError {
-  static StateError noElement() => StateError('No element');
-
-  static StateError noParent() => StateError('No parent');
-
-  static StateError noGrandparent() => StateError('No grandparent');
-
-  static StateError noUncle() => StateError('No uncle');
 }

@@ -1,5 +1,6 @@
 import 'package:flutter_learn/learn/algorithms/tree/red_black_node.dart';
-import 'package:flutter_learn/learn/algorithms/tree/red_black_tree.dart';
+
+import 'tree_binary.dart';
 
 class RedBlackHelper<T extends Comparable<T>> {
   RedBlackHelper(this.node);

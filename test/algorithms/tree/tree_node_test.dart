@@ -1,17 +1,17 @@
 import 'package:flutter_learn/learn/algorithms/tree/tree_node.dart';
-import 'package:flutter_learn/learn/algorithms/tree/tree_travels.dart';
+import 'package:flutter_learn/learn/algorithms/tree/tree_binary.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  late final TreeTravels treeTravels;
+  late final TreeBinary<num> treeBinary;
   late final TreeNode<int> tree;
   const resultPreOrder = [2, 7, 2, 6, 5, 11, 5, 9, 4];
   const resultInOrder = [2, 7, 5, 6, 11, 2, 5, 4, 9];
   const resultPostOrder = [2, 5, 11, 6, 7, 4, 9, 5, 2];
   const resultLevelOrder = [2, 7, 5, 2, 6, 9, 5, 11, 4];
+  const resultMaximum = 11;
 
   setUpAll(() {
-    treeTravels = TreeTravels<int, TreeNode<int>>();
     final node2 = TreeNode(2);
     final node7 = TreeNode(7);
     final node6 = TreeNode(6);
@@ -30,41 +30,52 @@ void main() {
       ..left = node7;
 
     tree = node2;
+    treeBinary = TreeBinary<num>(root: tree);
   });
 
   group('Tree pre-order travels', () {
     test('Pre-order travel recursive', () {
-      expect(treeTravels.travelPreOrderRecursive(tree), resultPreOrder);
+      expect(treeBinary.travelPreOrderRecursive(), resultPreOrder);
     });
 
     test('Pre-order travel iterative', () {
-      expect(treeTravels.travelPreOrderIterative(tree), resultPreOrder);
+      expect(treeBinary.travelPreOrderIterative(), resultPreOrder);
     });
   });
 
   group('Tree in-order travel', () {
     test('In-order travel recursive', () {
-      expect(treeTravels.travelInOrderRecursive(tree), resultInOrder);
+      expect(treeBinary.travelInOrderRecursive(), resultInOrder);
     });
 
     test('In-order travel iterative', () {
-      expect(treeTravels.travelInOrderIterative(tree), resultInOrder);
+      expect(treeBinary.travelInOrderIterative(), resultInOrder);
     });
   });
 
   group('Tree post-order travels', () {
     test('Post-order travel recursive', () {
-      expect(treeTravels.travelPostOrderRecursive(tree), resultPostOrder);
+      expect(treeBinary.travelPostOrderRecursive(), resultPostOrder);
     });
 
     test('Post-order travel iterative', () {
-      expect(treeTravels.travelPostOrderIterative(tree), resultPostOrder);
+      expect(treeBinary.travelPostOrderIterative(), resultPostOrder);
     });
   });
 
   group('Level-order travel', () {
     test('Level-order travel iterative', () {
-      expect(treeTravels.travelLevelOrderIterative(tree), resultLevelOrder);
+      expect(treeBinary.travelLevelOrderIterative(), resultLevelOrder);
+    });
+
+    group('Tree search', () {
+      test('Find maximum', () {
+        expect(treeBinary.maximum(), 9);
+      });
+
+      test('Find minimum', () {
+        expect(treeBinary.minimum(), 2);
+      });
     });
   });
 }

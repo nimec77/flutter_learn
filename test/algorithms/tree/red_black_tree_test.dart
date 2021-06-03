@@ -1,6 +1,5 @@
-import 'package:flutter_learn/learn/algorithms/tree/red_black_node.dart';
 import 'package:flutter_learn/learn/algorithms/tree/red_black_tree.dart';
-import 'package:flutter_learn/learn/algorithms/tree/tree_travels.dart';
+import 'package:flutter_learn/learn/algorithms/tree/tree_binary.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -15,12 +14,12 @@ void main() {
       ..insert(4)
       ..insert(9);
 
-    final treeTravel = TreeTravels<num, RedBlackNode<num>>();
+    final tree = TreeBinary<num>();
 
-    final actual = treeTravel.travelPreOrderRecursive(redBlackTree.root);
+    final actual = tree.travelPreOrderRecursive();
     print(actual);
 
-    final max = treeTravel.maximum(redBlackTree.root);
+    final max = tree.maximum();
     print(max);
   });
 }
