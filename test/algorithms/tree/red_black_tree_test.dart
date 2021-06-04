@@ -88,7 +88,7 @@ void main() {
 
   group('Random sequence tests', () {
     final random = math.Random(42);
-    final length = math.pow(10, 7).toInt();
+    final length = math.pow(10, 3).toInt();
     final randomTree = RedBlackTree<num>();
     final resultRandom = random.nextInt(length);
     final toRemoveLength = random.nextInt(length);
@@ -96,6 +96,7 @@ void main() {
     var resultMax = 0;
     var resultMin = length;
     for (final element in RandomIterable(length)) {
+    // for (var element = 0; element < length; element++) {
       if (resultMax < element) {
         resultMax = element;
       }
@@ -123,6 +124,7 @@ void main() {
       expect(actual.value, resultRandom);
     });
 
+    // Похоже удаление все же работает не корректно
     test('Random delete from tree', () {
       for (final element
           in toRemove.where((element) => element != resultMin && element != resultMax && element != resultRandom)) {
