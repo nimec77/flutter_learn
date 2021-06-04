@@ -105,15 +105,15 @@ class RedBlackTree<T extends Comparable<T>> extends TreeBinary<T> {
   }
 
   void leftRotate(RedBlackNode<T> x) {
-    final y = x.right!;
+    final y = x.right;
 
-    x.right = y.left;
+    x.right = y?.left;
 
-    if (y.left != null) {
-      y.left!.parent = x;
+    if (y?.left != null) {
+      y!.left!.parent = x;
     }
 
-    y.parent = x.parent;
+    y?.parent = x.parent;
     if (x.parent == null) {
       _root = y;
     } else if (x == x.parent!.left) {
@@ -121,20 +121,20 @@ class RedBlackTree<T extends Comparable<T>> extends TreeBinary<T> {
     } else {
       x.parent!.right = y;
     }
-    y.left = x;
+    y?.left = x;
     x.parent = y;
   }
 
   void rightRotate(RedBlackNode<T> x) {
-    final y = x.left!;
+    final y = x.left;
 
-    x.left = y.right;
+    x.left = y?.right;
 
-    if (y.right != null) {
-      y.right!.parent = x;
+    if (y?.right != null) {
+      y!.right!.parent = x;
     }
 
-    y.parent = x.parent;
+    y?.parent = x.parent;
     if (x.parent == null) {
       _root = y;
     } else if (x == x.parent!.right) {
@@ -143,7 +143,7 @@ class RedBlackTree<T extends Comparable<T>> extends TreeBinary<T> {
       x.parent!.left = y;
     }
 
-    y.right = x;
+    y?.right = x;
     x.parent = y;
   }
 
@@ -171,7 +171,7 @@ class RedBlackTree<T extends Comparable<T>> extends TreeBinary<T> {
     }
 
     if (z == null) {
-      throw TreeElementError.noElement();
+      return;
     }
 
     y = z;
@@ -220,20 +220,20 @@ class RedBlackTree<T extends Comparable<T>> extends TreeBinary<T> {
           s = x.parent!.right;
         }
 
-        if (s!.left!.color == NodeColor.black && s.right!.color == NodeColor.black) {
+        if (s != null && s.left?.color == NodeColor.black && s.right?.color == NodeColor.black) {
           s.color = NodeColor.red;
           x = x.parent!;
         } else {
-          if (s.right?.color == NodeColor.black) {
-            s.left!.color = NodeColor.black;
+          if (s != null && s.right?.color == NodeColor.black) {
+            s.left?.color = NodeColor.black;
             s.color = NodeColor.red;
             rightRotate(s);
             s = x.parent!.right;
           }
 
-          s!.color = x.parent!.color;
+          s?.color = x.parent!.color;
           x.parent!.color = NodeColor.black;
-          s.right!.color = NodeColor.black;
+          s?.right?.color = NodeColor.black;
           leftRotate(x.parent!);
           x = root;
         }
@@ -245,20 +245,20 @@ class RedBlackTree<T extends Comparable<T>> extends TreeBinary<T> {
           rightRotate(x.parent!);
           s = x.parent!.left;
         }
-        if (s!.right?.color == NodeColor.black && s.left?.color == NodeColor.black) {
+        if (s != null && s.right?.color == NodeColor.black && s.left?.color == NodeColor.black) {
           s.color = NodeColor.red;
           x = x.parent!;
         } else {
-          if (s.left!.color == NodeColor.black) {
-            s.right!.color = NodeColor.black;
+          if (s != null && s.left?.color == NodeColor.black) {
+            s.right?.color = NodeColor.black;
             s.color = NodeColor.red;
             leftRotate(s);
             s = x.parent;
           }
 
-          s!.color = x.parent!.color;
+          s?.color = x.parent!.color;
           x.parent!.color = NodeColor.black;
-          s.left!.color = NodeColor.black;
+          s?.left?.color = NodeColor.black;
           rightRotate(x.parent!);
           x = root;
         }

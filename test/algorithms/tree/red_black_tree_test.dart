@@ -30,9 +30,7 @@ void main() {
     });
 
     test('Delete from Red-black tree', () {
-      print(tree.printTree());
       tree.delete(9);
-      print(tree.printTree());
 
       expect(tree.travelPreOrderIterative(), resultDelete);
     });
@@ -89,9 +87,12 @@ void main() {
   });
 
   group('Random sequence tests', () {
-    final length = math.pow(10, 1).toInt();
+    final random = math.Random(42);
+    final length = math.pow(10, 7).toInt();
     final randomTree = RedBlackTree<num>();
-    final resultRandom = math.Random(42).nextInt(length);
+    final resultRandom = random.nextInt(length);
+    final toRemoveLength = random.nextInt(length);
+    final toRemove = RandomIterable(toRemoveLength);
     var resultMax = 0;
     var resultMin = length;
     for (final element in RandomIterable(length)) {
@@ -119,6 +120,21 @@ void main() {
     test('Find random element in tree', () {
       final actual = randomTree.searchTree(resultRandom);
 
+      expect(actual.value, resultRandom);
+    });
+
+    test('Random delete from tree', () {
+      for (final element
+          in toRemove.where((element) => element != resultMin && element != resultMax && element != resultRandom)) {
+        randomTree.delete(element);
+      }
+      final min = randomTree.minimum();
+      expect(min, resultMin);
+
+      final max = randomTree.maximum();
+      expect(max, resultMax);
+
+      final actual = randomTree.searchTree(resultRandom);
       expect(actual.value, resultRandom);
     });
   });
