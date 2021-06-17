@@ -1,5 +1,5 @@
-import 'package:flutter_learn/learn/algorithms/tree/tree_node.dart';
 import 'package:flutter_learn/learn/algorithms/tree/tree_binary.dart';
+import 'package:flutter_learn/learn/algorithms/tree/tree_node.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
