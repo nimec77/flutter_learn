@@ -4,23 +4,34 @@ class ColorChoice {
       return -1;
     }
 
-    final xs = pascalTriangle(n);
+    var index = 0;
+    for (final element in pascalTriangle(n)) {
+      if (element == m) {
+        return index;
+      }
+      ++index;
+    }
 
-    return xs.indexOf(m);
+    return -1;
   }
 
-  List<int> pascalTriangle(int n) {
+  Iterable<int> pascalTriangle(int n) sync* {
     var prev = [1];
     var next = <int>[];
-    for (var i = 1; i <= n; ++i) {
+    for (var i = 1; i < n; ++i) {
       next = [1];
       for (var j = 1; j < prev.length; ++j) {
         next.add(prev[j - 1] + prev[j]);
       }
       next.add(1);
-      prev = [...next];
+      prev = next;
     }
-    return prev;
+
+    yield 1;
+    for (var i = 1; i < prev.length; ++i) {
+      yield (prev[i - 1] + prev[i]);
+    }
+    yield 1;
   }
 
   int checkChooseBest(int m, int n) {
