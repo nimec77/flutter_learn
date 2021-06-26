@@ -1,21 +1,20 @@
+class Tuple {
+  const Tuple(this.x, this.m);
+
+  final int x;
+  final int m;
+}
+
 class ColorChoice {
   int checkChoose(int m, int n) {
     if (m == 0) {
       return -1;
     }
 
-    var index = 0;
-    for (final element in pascalTriangle(n)) {
-      if (element == m) {
-        return index;
-      }
-      ++index;
-    }
-
-    return -1;
+    return pascalTriangle(n).firstWhere((element) => element.m == m, orElse: () => const Tuple(-1, -1)).x;
   }
 
-  Iterable<int> pascalTriangle(int n) sync* {
+  Iterable<Tuple> pascalTriangle(int n) sync* {
     var prev = [1];
     var next = <int>[];
     for (var i = 1; i < n; ++i) {
@@ -27,11 +26,13 @@ class ColorChoice {
       prev = next;
     }
 
-    yield 1;
+    var index = 0;
+
+    yield Tuple(index++, 1);
     for (var i = 1; i < prev.length; ++i) {
-      yield (prev[i - 1] + prev[i]);
+      yield (Tuple(index++, prev[i - 1] + prev[i]));
     }
-    yield 1;
+    yield Tuple(index++, 1);
   }
 
   int checkChooseBest(int m, int n) {
