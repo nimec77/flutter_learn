@@ -10,20 +10,18 @@ class SumOfIntervals {
     if (intervalsQueue.length == 1) {
       return intervalLength(intervalsQueue.first);
     }
-    final interval = intervalsQueue.removeFirst();
+    var interval = intervalsQueue.removeFirst();
     final checkedQueue = Queue<List<int>>();
     while (intervalsQueue.isNotEmpty) {
-      final next = intervalsQueue.removeFirst();
-      final unionInterval = union(interval, next);
+      final other = intervalsQueue.removeFirst();
+      final unionInterval = union(interval, other);
       if (unionInterval.isEmpty) {
-        checkedQueue.add(next);
+        checkedQueue.add(other);
       } else {
-        return sumOf(checkedQueue
-          ..add(unionInterval)
-          ..addAll(intervalsQueue));
+        interval = unionInterval;
       }
     }
-    return intervalLength(interval) + sumOf(checkedQueue);
+    return checkedQueue.isEmpty ? intervalLength(interval) : intervalLength(interval) + sumOf(checkedQueue);
   }
 
   List<int> union(List<int> a, List<int> b) {
@@ -32,11 +30,11 @@ class SumOfIntervals {
     late final List<int> minInterval;
     late final List<int> maxInterval;
     if (a.first < b.first) {
-      minInterval = [...a];
-      maxInterval = [...b];
+      minInterval = a;
+      maxInterval = b;
     } else {
-      minInterval = [...b];
-      maxInterval = [...a];
+      minInterval = b;
+      maxInterval = a;
     }
     if (maxInterval.first < minInterval.last) {
       first = math.min(minInterval.first, maxInterval.first);
