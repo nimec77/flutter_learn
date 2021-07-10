@@ -5,6 +5,16 @@ void main() {
   final sumOfIntervals = SumOfIntervals();
   group('basic tests', () {
     test(
+        'Testing for [[1, 3], [4, 7], [2, 5], [8, 12]]',
+        () => expect(
+            sumOfIntervals.sumOfIntervals([
+              [1, 3],
+              [4, 7],
+              [2, 5],
+              [8, 12],
+            ]),
+            equals(10)));
+    test(
         'Testing for [[-448, -215], [-140, -5], [196, 293], [-312, -304], [41, 76], [185, 309]]',
         () => expect(
             sumOfIntervals.sumOfIntervals([

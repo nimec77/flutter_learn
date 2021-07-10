@@ -18,6 +18,8 @@ class SumOfIntervals {
       if (unionInterval.isEmpty) {
         checkedQueue.add(other);
       } else {
+        intervalsQueue.addAll(checkedQueue);
+        checkedQueue.clear();
         interval = unionInterval;
       }
     }
