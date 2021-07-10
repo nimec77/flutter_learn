@@ -39,13 +39,10 @@ class SumOfIntervals {
       maxInterval = a;
     }
     if (maxInterval.first < minInterval.last) {
-      first = math.min(minInterval.first, maxInterval.first);
+      first = minInterval.first;
       last = math.max(minInterval.last, maxInterval.last);
     }
-    if (first != null) {
-      return [first, last!];
-    }
-    return [];
+    return first != null ? [first, last!] : [];
   }
 
   int intervalLength(List<int> interval) {
