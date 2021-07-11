@@ -1,5 +1,4 @@
 import 'dart:collection';
-import 'dart:math' as math;
 
 class SumOfIntervals {
   int sumOfIntervals(List<List<int>> intervals) {
@@ -27,22 +26,26 @@ class SumOfIntervals {
   }
 
   List<int> union(List<int> a, List<int> b) {
-    int? first;
-    int? last;
-    late final List<int> minInterval;
-    late final List<int> maxInterval;
+    late final int beginMax;
+    late final int beginMin;
     if (a.first < b.first) {
-      minInterval = a;
-      maxInterval = b;
+      beginMin = a.first;
+      beginMax = b.first;
     } else {
-      minInterval = b;
-      maxInterval = a;
+      beginMin = b.first;
+      beginMax = a.first;
     }
-    if (maxInterval.first < minInterval.last) {
-      first = minInterval.first;
-      last = math.max(minInterval.last, maxInterval.last);
+    late final int endMax;
+    late final int endMin;
+    if (a.last < b.last) {
+      endMin = a.last;
+      endMax = b.last;
+    } else {
+      endMin = b.last;
+      endMax = a.last;
     }
-    return first != null ? [first, last!] : [];
+
+    return beginMax < endMin ? [beginMin, endMax] : [];
   }
 
   int intervalLength(List<int> interval) {
