@@ -61,6 +61,17 @@ class TotalAreaCoveredByRectangles {
 
     return combinedRects;
   }
+
+  int calculateBest(List<List<int>> rectangles) {
+    var b = 1 << 62;
+    rectangles = rectangles.map((r) => [...r]).toList()..sort((a, b) => area(b) - area(a));
+    final root = HalfSpace();
+    var s = 0;
+    for (var rect in rectangles) {
+      s += root.add(rect, [-b, -b, b, b]);
+    }
+    return s;
+  }
 }
 
 class Point {
@@ -167,4 +178,46 @@ class Rectangle {
 
   @override
   String toString() => '[$left, $right]';
+}
+
+int area(List<int> r) => (r[2] - r[0]) * (r[3] - r[1]);
+
+class HalfSpace {
+  HalfSpace();
+
+  bool filled = false;
+  HalfSpace? left;
+  HalfSpace? right;
+  int i = 0;
+  int v = 0;
+
+
+  int add(List<int> r, List<int> b) {
+    if (filled) return 0;
+    if (left != null) {
+      if (r[i + 2] <= v) {
+        b[i + 2] = v;
+        return left!.add(r, b);
+      }
+      if (r[i] >= v) {
+        b[i] = v;
+        return right!.add(r, b);
+      }
+      var leftR = [...r], leftB = [...b];
+      leftB[i + 2] = leftR[i + 2] = v;
+      r[i] = b[i] = v;
+      return left!.add(leftR, leftB) + right!.add(r, b);
+    }
+    left = HalfSpace();
+    right = HalfSpace();
+    for (var j = 0; j < 4; j++) {
+      if (r[j] != b[j]) {
+        i = j % 2;
+        v = b[j] = r[j];
+        return j <= 1 ? right!.add(r, b) : left!.add(r, b);
+      }
+    }
+    filled = true;
+    return area(r);
+  }
 }

@@ -3,17 +3,17 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final totalAreaCoveredByRectangles = TotalAreaCoveredByRectangles();
-  // test('1 rectangle (version 2)', () {
-  //   expect(
-  //       totalAreaCoveredByRectangles.calculate(const [
-  //         [0, 4, 11, 6]
-  //       ]),
-  //       equals(22),
-  //       reason: 'calculate([[0, 4, 11, 6]]]) should return 22');
-  // });
+  test('1 rectangle (version 2)', () {
+    expect(
+        totalAreaCoveredByRectangles.calculateBest(const [
+          [0, 4, 11, 6]
+        ]),
+        equals(22),
+        reason: 'calculate([[0, 4, 11, 6]]]) should return 22');
+  });
   test('2 rectangle (version 2)', () {
     expect(
-        totalAreaCoveredByRectangles.calculate(const [
+        totalAreaCoveredByRectangles.calculateBest(const [
           [3, 3, 8, 5],
           [6, 3, 8, 9],
           [11, 6, 14, 12],
@@ -23,7 +23,7 @@ void main() {
   });
   test('3 rectangle (version 2)', () {
     expect(
-        totalAreaCoveredByRectangles.calculate(const [
+        totalAreaCoveredByRectangles.calculateBest(const [
           [0, 0, 4, 3],
           [2, 1, 5, 5],
           [4, 4, 7, 7],
@@ -33,7 +33,7 @@ void main() {
   });
   test('4 rectangle (version 2)', () {
     expect(
-        totalAreaCoveredByRectangles.calculate(const [
+        totalAreaCoveredByRectangles.calculateBest(const [
           [0, 0, 4, 3],
           [2, 1, 5, 5],
           [3, 0, 6, 3],
