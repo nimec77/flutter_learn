@@ -4,7 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   final consonantValue = ConsonantValue();
   group('Fixed tests', () {
-    test('Testing for guzyatpthzdxyusuohsoaa', () => expect(consonantValue.solveBest('guzyatpthzdxyusuohsoaa'), equals(143)));
+    test('Testing for guzyatpthzdxyusuohsoaa',
+        () => expect(consonantValue.solveBest('guzyatpthzdxyusuohsoaa'), equals(143)));
     test('Testing for zodiac', () => expect(consonantValue.solveBest('zodiac'), equals(26)));
     test('Testing for chruschtschov', () => expect(consonantValue.solve('chruschtschov'), equals(80)));
     test('Testing for khrushchev', () => expect(consonantValue.solve('khrushchev'), equals(38)));
