@@ -1,4 +1,3 @@
-
 class TotalAreaCoveredPartTwo {
   int calculate(List<List<int>> rectangles) {
     final rects = rectangles.map((points) => Rect.fromList(points)).where((rect) => rect.area > 0);
@@ -10,22 +9,22 @@ class TotalAreaCoveredPartTwo {
     var startX = xDividers.first;
     for (final endX in xDividers.skip(1)) {
       final width = endX - startX;
-      final rectsInLine = rects.where((rect) => rect.minX < endX && rect.maxX > startX);
-      area += width * sumOfHeights(rectsInLine);
+      final rectsInLine = rects.where((rect) => rect.minX < endX && rect.maxX > startX).toList();
       startX = endX;
+      if (rectsInLine.isEmpty) {
+        continue;
+      }
+      area += width * sumOfHeights(rectsInLine);
     }
     return area;
   }
 
-  int sumOfHeights(Iterable<Rect> rects) {
+  int sumOfHeights(List<Rect> rects) {
     final nums = <int>{};
     for (final rect in rects) {
       nums.addAll(List.generate(rect.maxY - rect.minY, (i) => rect.minY + i));
     }
     return nums.length;
-    // if (rects.isEmpty) {
-    //   return 0;
-    // }
     // final setRects = rects.toList()..sort((a, b) => a.minY - b.minY);
     //
     // var sum = 0;
