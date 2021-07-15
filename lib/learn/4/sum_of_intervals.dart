@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:math' as math;
 
 class SumOfIntervals {
   int sumOfIntervals(List<List<int>> intervals) {
@@ -58,5 +59,30 @@ class SumOfIntervals {
       nums.addAll(List.generate(interval.last - interval.first, (index) => interval.first + index));
     }
     return nums.length;
+  }
+
+  int sumOfHeights(List<List<int>> intervals) {
+    if (intervals.length == 1) {
+      return intervals.first.last - intervals.first.first;
+    }
+    final sortedRects = intervals.toList()..sort((a, b) => a.first == b.first ? a.last - b.last : a.first - b.first);
+    var sum = 0;
+    var start = sortedRects.first.first;
+    var end = sortedRects.first.last;
+
+    for (final inter in sortedRects.skip(1)) {
+      if (start == inter.first && end == inter.last) {
+        continue;
+      }
+      if (inter.first > end) {
+        sum += end - start;
+        start = inter.first;
+        end = inter.last;
+      } else {
+        end = math.max(end, inter.last);
+      }
+    }
+
+    return sum + end - start;
   }
 }

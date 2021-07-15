@@ -1,5 +1,10 @@
+import 'dart:math' as math;
+
 class TotalAreaCoveredPartTwo {
   int calculate(List<List<int>> rectangles) {
+    if (rectangles.isEmpty) {
+      return 0;
+    }
     final rects = rectangles.map((points) => Rect.fromList(points)).where((rect) => rect.area > 0);
     if (rects.length == 1) {
       return rects.first.area;
@@ -20,29 +25,28 @@ class TotalAreaCoveredPartTwo {
   }
 
   int sumOfHeights(List<Rect> rects) {
-    final nums = <int>{};
-    for (final rect in rects) {
-      nums.addAll(List.generate(rect.maxY - rect.minY, (i) => rect.minY + i));
+    if (rects.length == 1) {
+      return rects.first.maxY - rects.first.minY;
     }
-    return nums.length;
-    // final setRects = rects.toList()..sort((a, b) => a.minY - b.minY);
-    //
-    // var sum = 0;
-    // var start = rects.first.minY;
-    // var end = rects.first.maxY;
-    //
-    // for (var i = 1; i < rects.length; i++) {
-    //   final b = setRects[i];
-    //   if (end >= b.minY) {
-    //     if (b.maxY > end) end = b.maxY;
-    //   } else {
-    //     sum += end - start;
-    //     start = b.minY;
-    //     end = b.maxY;
-    //   }
-    // }
-    //
-    // return sum + end - start;
+    final sortedRects = rects..sort((a, b) => a.minY == b.minY ? a.maxY - b.maxY : a.minY - b.minY);
+    var sum = 0;
+    var start = sortedRects.first.minY;
+    var end = sortedRects.first.maxY;
+
+    for (final rect in sortedRects.skip(1)) {
+      if (start == rect.minY && end == rect.maxY) {
+        continue;
+      }
+      if (rect.minY > end) {
+        sum += end - start;
+        start = rect.minY;
+        end = rect.maxY;
+      } else {
+        end = math.max(end, rect.maxY);
+      }
+    }
+
+    return sum + end - start;
   }
 }
 
