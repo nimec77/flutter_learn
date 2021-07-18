@@ -159,17 +159,9 @@ class Node {
 
   int get mid => (start + end) ~/ 2;
 
-  Node get left {
-    _left ??= Node(start, mid, listX);
+  Node get left => _left ??= Node(start, mid, listX);
 
-    return _left!;
-  }
-
-  Node get right {
-    _right ??= Node(mid, end, listX);
-
-    return _right!;
-  }
+  Node get right => _right ??= Node(mid, end, listX);
 
   int update(int i, int j, int val) {
     if (i >= j) {
