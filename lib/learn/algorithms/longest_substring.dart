@@ -6,19 +6,17 @@ class LongestSubstring {
     var result = 0;
     var current = 0;
     for (var i = 0; i < str.length; ++i) {
-      // if (str[i] == '0' && zeroPosition == -1) {
-      //   continue;
-      // }
-      if (str[i] == '1') {
-        current++;
-      } else if (zeroPosition == -1) {
-        zeroPosition = i;
-        continue;
+      if (str[i] == '0') {
+        if (zeroPosition == -1) {
+          zeroPosition = i;
+        } else {
+          result = math.max(result, current);
+          i = zeroPosition;
+          zeroPosition = -1;
+          current = 0;
+        }
       } else {
-         result = math.max(result, current);
-         i = zeroPosition;
-         zeroPosition = -1;
-         current = 0;
+        current++;
       }
     }
 
