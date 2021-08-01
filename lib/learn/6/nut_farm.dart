@@ -9,17 +9,13 @@ class NutFarm {
             break;
 
           case r'\':
-            if (nuts[i] > 0) {
-              nuts[i]--;
-              nuts[i + 1]++;
-            }
+            nuts[i + 1] += nuts[i];
+            nuts[i] = 0;
             break;
 
           case '/':
-            if (nuts[i] > 0) {
-              nuts[i]--;
-              nuts[i - 1]++;
-            }
+            nuts[i - 1] += nuts[i];
+            nuts[i] = 0;
             break;
 
           case '_':
