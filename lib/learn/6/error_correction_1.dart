@@ -26,6 +26,10 @@ class ErrorCorrection1 {
     return result;
   }
 
+  String encodeBest(String text) {
+    return text.runes.expand((element) => element.toRadixString(2).padLeft(8, '0').split('')).map((e) => e * 3).join();
+  }
+
   String decodeBest(String bits) {
     return bits
         .replaceAllMapped(RegExp('...'), (match) => [0, 1, 2, 4].contains(int.parse(match[0]!, radix: 2)) ? '0' : '1')
