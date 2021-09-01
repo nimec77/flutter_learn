@@ -5,9 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   bool aux(List<dynamic> actual, List<dynamic> exp) {
-    int a0 = actual[0], e0 = exp[0];
-    final a1 = double.parse(actual[1]);
-    final e1 = double.parse(exp[1]);
+    final a0 = actual[0] as int, e0 = exp[0] as int;
+    final a1 = double.parse(actual[1] as String);
+    final e1 = double.parse(exp[1] as String);
     final inrange0 = a0 == e0;
     final r = (a1 - e1).abs();
     final inrange1 = r <= 1e-9;
@@ -22,10 +22,10 @@ void main() {
 
   group('fixed tests', () {
     final piApproximation = PiApproximation();
-    assertFuzzy(0.1, piApproximation.iterPi(0.1), [10, '3.0418396189']);
-    assertFuzzy(0.01, piApproximation.iterPi(0.01), [100, '3.1315929036']);
-    assertFuzzy(0.001, piApproximation.iterPi(0.001), [1000, '3.1405926538']);
-    assertFuzzy(0.0001, piApproximation.iterPi(0.0001), [10000, '3.1414926536']);
+    assertFuzzy(0.1, piApproximation.iterPi(0.1), <dynamic>[10, '3.0418396189']);
+    assertFuzzy(0.01, piApproximation.iterPi(0.01), <dynamic>[100, '3.1315929036']);
+    assertFuzzy(0.001, piApproximation.iterPi(0.001), <dynamic>[1000, '3.1405926538']);
+    assertFuzzy(0.0001, piApproximation.iterPi(0.0001), <dynamic>[10000, '3.1414926536']);
   });
 
 }

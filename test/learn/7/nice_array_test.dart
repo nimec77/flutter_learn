@@ -1,7 +1,7 @@
 import 'package:flutter_learn/learn/7/nice_array.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void testing(List<int> arr, exp) {
+void testing(List<int> arr, bool exp) {
   final niceArray = NiceArray();
   test('Testing for [${arr.join(', ')}]', () {
     expect(niceArray.isNice(arr), equals(exp));

@@ -60,7 +60,7 @@ class TwiceLinear {
   }
 
   int dblLinearTree(int n) {
-    final tree = SplayTreeSet<int>.from([1]);
+    final tree = SplayTreeSet<int>.from(<int>[1]);
     for (var i = 1; i <= n; i++) {
       final x = tree.first;
       tree

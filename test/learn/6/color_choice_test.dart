@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   final colorChoice = ColorChoice();
 
-  void dotest(int m, n, exp) {
+  void dotest(int m, int n, int exp) {
     test('Testing for $m $n', () =>
         expect(colorChoice.checkChoose(m, n), equals(exp)));
   }

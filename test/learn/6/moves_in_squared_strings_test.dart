@@ -3,11 +3,11 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final movesInSquaredStrings = MovesInSquaredStrings();
-  void dotest1(String s, exp) {
+  void dotest1(String s, String exp) {
     test('Testing rot for: \n$s \n', () =>
         expect(movesInSquaredStrings.oper(movesInSquaredStrings.rot, s), equals(exp)));
   }
-  void dotest2(String s, exp) {
+  void dotest2(String s, String exp) {
     test('Testing selfieAndRot for: \n$s \n', () =>
         expect(movesInSquaredStrings.oper(movesInSquaredStrings.selfieAndRot, s), equals(exp)));
   }

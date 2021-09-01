@@ -2,7 +2,7 @@ import 'package:flutter_learn/learn/5/some_egyptian_fractions.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  void doTest(String nrStr, String drStr, exp) {
+  void doTest(String nrStr, String drStr, String exp) {
     final someEgyptianFactions = SomeEgyptianFractions();
     test('Testing for: $nrStr, $drStr', () =>
         expect(someEgyptianFactions.decompose(nrStr, drStr), equals(exp)));

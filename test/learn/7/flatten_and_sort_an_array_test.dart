@@ -5,13 +5,13 @@ void main() {
   group('Fixed tests', () {
     final flattenAndSortAnArray = FlattenAndSortAnArray();
     test('Testing for []', () {
-      expect(flattenAndSortAnArray.flattenAndSort([]), equals([]));
+      expect(flattenAndSortAnArray.flattenAndSort([]), equals(<int>[]));
     });
     test('Testing for [[]]', () {
-      expect(flattenAndSortAnArray.flattenAndSort([[]]), equals([]));
+      expect(flattenAndSortAnArray.flattenAndSort([[]]), equals(<int>[]));
     });
     test('Testing for [[], []]', () {
-      expect(flattenAndSortAnArray.flattenAndSort([[], []]), equals([]));
+      expect(flattenAndSortAnArray.flattenAndSort([[], []]), equals(<int>[]));
     });
     test('Testing for [[], [1]]', () {
       expect(

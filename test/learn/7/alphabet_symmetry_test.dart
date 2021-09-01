@@ -17,7 +17,7 @@ void main() {
       expect(alphabetSymmetry.solve(['encode', 'abc', 'xyzD', 'ABmD']), equals([1, 3, 1, 3]));
     });
     test('Testing for []', () {
-      expect(alphabetSymmetry.solve([]), equals([]));
+      expect(alphabetSymmetry.solve([]), equals(<int>[]));
     });
   });
 }

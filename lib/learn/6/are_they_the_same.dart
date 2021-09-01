@@ -5,7 +5,7 @@ class AreTheyTheSame {
     if (a1 == null || a2 == null) {
       return false;
     }
-    return const ListEquality().equals(a1.map((e) => e * e).toList()..sort(), a2..sort());
+    return const ListEquality<int>().equals(a1.map((e) => e * e).toList()..sort(), a2..sort());
   }
 
   bool compInteresting(List<int>? a1, List<int>? a2) {

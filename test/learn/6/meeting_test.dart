@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   final meeting = Meeting();
 
-  void testing(s, exp) => test('Testing for $s', () => expect(meeting.meeting(s), equals(exp)));
+  void testing(String s, String exp) => test('Testing for $s', () => expect(meeting.meeting(s), equals(exp)));
   group('Fixed tests', () {
     testing(
         'Alexis:Wahl;John:Bell;Victoria:Schwarz;Abba:Dorny;Grace:Meta;Ann:Arno;Madison:STAN;Alex:Cornwell;Lewis:Kern;Megan:Stan;Alex:Korn',

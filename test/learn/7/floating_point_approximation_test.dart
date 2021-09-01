@@ -3,7 +3,7 @@
 import 'package:flutter_learn/learn/7/floating_point_approximation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-void assertFuzzyEquals(num a, num b, num c, [msg = '']) {
+void assertFuzzyEquals(num a, num b, num c, [String msg = '']) {
   final floatingPointApproximation = FloatingPointApproximation();
   // max error// ignore_for_file: avoid_print
 

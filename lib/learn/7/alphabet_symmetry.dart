@@ -18,7 +18,7 @@ class AlphabetSymmetry {
 
   List<int> solveBest(List<String> arr) {
     List<int>.from(
-      arr.map(
+      arr.map<int>(
         (str) => str
             .toLowerCase()
             .codeUnits

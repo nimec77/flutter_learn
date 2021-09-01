@@ -26,7 +26,7 @@ void main() {
           equals([
             ['M: 9991', 'B: 1427', 'C: 1110']
           ]));
-      expect(howMuch.howMuch(2950, 2950), equals([]));
+      expect(howMuch.howMuch(2950, 2950), equals(<String>[]));
       expect(
           howMuch.howMuch(8200, 8000),
           equals([

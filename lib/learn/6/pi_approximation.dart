@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
 class PiApproximation {
-  List iterPi(double epsilon) {
+  List<dynamic> iterPi(double epsilon) {
     var result = 0.0;
     var count = 0;
     for (final element in leibniz()) {
@@ -12,7 +12,7 @@ class PiApproximation {
       }
     }
 
-    return [count, (4 * result).toStringAsFixed(10)];
+    return <dynamic>[count, (4 * result).toStringAsFixed(10)];
   }
 
   Iterable<double> leibniz() sync* {
@@ -29,13 +29,13 @@ class PiApproximation {
     }
   }
 
-  List iterPiBest(double epsilon) {
+  List<dynamic> iterPiBest(double epsilon) {
     var result = 0.0;
     var i = 0;
     for (var k = 1; (math.pi - result).abs() >= epsilon; k += 2, i++) {
       result += 4 / k * (i.isEven ? 1 : -1);
     }
 
-    return [i, result.toStringAsFixed(10)];
+    return <dynamic>[i, result.toStringAsFixed(10)];
   }
 }
