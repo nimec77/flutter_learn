@@ -5,7 +5,7 @@ void main() {
   final tvRemove = TvRemote();
 
   test('Example', () {
-    expect(tvRemove.tvRemote('codewars'), equals(36));
+    expect(tvRemove.tvRemoteString('codewars'), equals(36));
   });
 
   test('Misc', () {

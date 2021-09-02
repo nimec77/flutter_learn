@@ -16,4 +16,22 @@ class TvRemote {
     }
     return count;
   }
+
+  int tvRemoteString(String word) {
+    const virtualKeyboard = 'abcde123fghij456klmno789pqrst.@0uvwxyz_/';
+
+    var count = 0;
+    var prevX = 0;
+    var prevY = 0;
+    for (final sym in word.split('')) {
+      final index = virtualKeyboard.indexOf(sym);
+      final x = index % 8;
+      final y = index ~/ 8;
+      count += (x - prevX).abs() + (y - prevY).abs() + 1;
+      prevX = x;
+      prevY = y;
+    }
+
+    return count;
+  }
 }
