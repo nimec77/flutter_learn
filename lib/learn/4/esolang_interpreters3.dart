@@ -51,6 +51,6 @@ class EsolangInterpreters3 {
           }
       }
     }
-    return grid.map((row) => row.join('')).join('\r\n');
+    return grid.map((row) => row.join()).join('\r\n');
   }
 }
