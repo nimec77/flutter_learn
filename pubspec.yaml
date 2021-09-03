@@ -28,7 +28,7 @@ dependencies:
   tuple: ^2.0.0
 
 dev_dependencies:
-  dart_code_metrics: ^4.2.1
+#  dart_code_metrics: ^4.2.1
   flutter_test:
     sdk: flutter
   very_good_analysis: ^2.3.0

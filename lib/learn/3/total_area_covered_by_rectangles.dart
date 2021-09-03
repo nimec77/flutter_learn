@@ -76,7 +76,6 @@ class TotalAreaCoveredByRectangles {
   }
 }
 
-@immutable
 class Point {
   const Point(this.x, this.y);
 
