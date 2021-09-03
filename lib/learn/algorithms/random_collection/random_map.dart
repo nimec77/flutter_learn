@@ -3,10 +3,10 @@ import 'dart:collection';
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/random_iterable.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/random_map_entry_iterable.dart';
 
-import 'random_iterable.dart';
-import 'random_map_entry_iterable.dart';
-
+@immutable
 class RandomMap extends UnmodifiableMapBase<int, int> {
   RandomMap(this.length, {int? max}) : _max = max ?? length;
 
@@ -20,8 +20,8 @@ class RandomMap extends UnmodifiableMapBase<int, int> {
   @override
   int? operator [](Object? key) {
     ArgumentError.checkNotNull(key, 'key');
-    final index = key as int;
-    RangeError.checkNotNegative(index, 'key');
+    final index = key as int?;
+    RangeError.checkNotNegative(index!, 'key');
     if (index >= length) {
       throw RangeError.index(index, this, 'key');
     }
@@ -50,15 +50,15 @@ class RandomMap extends UnmodifiableMapBase<int, int> {
   @override
   bool containsKey(Object? key) {
     ArgumentError.checkNotNull(key, 'key');
-    final index = key as int;
+    final index = key as int?;
 
-    return index > 0 && index < length;
+    return index! > 0 && index < length;
   }
 
   @override
   bool containsValue(Object? value) {
     ArgumentError.checkNotNull(value, 'value');
-    final index = value as int;
+    final index = value as int?;
 
     return RandomIterable(length, max: _max).any((element) => element == index);
   }

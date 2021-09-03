@@ -33,7 +33,7 @@ class KPrimes {
 
     for (final prime7 in primes7) {
       for (final prime3 in primes3) {
-        var sum = s - prime7 - prime3;
+        final sum = s - prime7 - prime3;
         if (prime3 <= 1) {
           continue;
         }
@@ -79,8 +79,8 @@ class KPrimes {
     var result = 0;
     final b = countKPrimes(7, 128, s - 6);
     final c = countKPrimes(3, 4, s - 130);
-    for (var j in b) {
-      for (var k in c) {
+    for (final j in b) {
+      for (final k in c) {
         if (isPrime(s - j - k)) {
           result++;
         }

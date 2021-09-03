@@ -7,8 +7,8 @@ void main() {
     test('Testing for []', () => expect(countTheSmileyFaces.countSmileys([]), equals(0)));
     test("Testing for [':)', ';(', ';}', ':-D']",
         () => expect(countTheSmileyFaces.countSmileys([':)', ';(', ';}', ':-D']), equals(2)));
-    test("Testing for [';]', ':[', ';*', ':\$', ';-D']",
-        () => expect(countTheSmileyFaces.countSmileys([';]', ':[', ';*', ':\$', ';-D']), equals(1)));
+    test(r"Testing for [';]', ':[', ';*', ':\$', ';-D']",
+        () => expect(countTheSmileyFaces.countSmileys([';]', ':[', ';*', r':\$', ';-D']), equals(1)));
     test("Testing for [':)',':(',':D',':O',':;']",
         () => expect(countTheSmileyFaces.countSmileys([':)', ':(', ':D', ':O', ':;']), equals(2)));
     test("Testing for [':-)',';~D',':-D',':_D']",

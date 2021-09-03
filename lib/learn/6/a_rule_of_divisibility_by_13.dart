@@ -7,6 +7,7 @@ class ARuleOfDivisibilityBy13 {
 
     var result = remainder(lst, sequence);
     var sum = 0;
+    //ignore: literal_only_boolean_expressions
     while (true) {
       sum = remainder(result.toString().split('').map(int.parse).toList(), sequence);
       if (result == sum) {
@@ -32,6 +33,7 @@ class ARuleOfDivisibilityBy13 {
   int thirtBest(int n) {
     var digit = n;
     const sequence = [1, 10, 9, 12, 3, 4];
+    //ignore: literal_only_boolean_expressions
     while (true) {
       var r = digit, q = -1, result = 0, i = 0;
       while (q != 0) {

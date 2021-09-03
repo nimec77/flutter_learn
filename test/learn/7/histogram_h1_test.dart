@@ -5,9 +5,7 @@ void main() {
   final histogramH1 = HistogramH1();
 
   String shw(List<int> results) {
-    print(results);
     final hist = histogramH1.histogram(results);
-    print(hist);
     return hist;
   }
 

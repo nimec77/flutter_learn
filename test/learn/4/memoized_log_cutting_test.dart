@@ -19,15 +19,15 @@ void main() {
 
   group('Example Log', () {
     final memoizedLogCutting = MemoizedLogCutting();
-    test('The optimal price for n = 0 should be \$0', () => expect(memoizedLogCutting.cutLog(p, 0), equals(0)));
-    test('The optimal price for n = 1 should be \$1', () => expect(memoizedLogCutting.cutLog(p, 1), equals(1)));
-    test('The optimal price for n = 5 should be \$13', () => expect(memoizedLogCutting.cutLog(p, 5), equals(13)));
-    test('The optimal price for n = 8 should be \$22', () => expect(memoizedLogCutting.cutLog(p, 8), equals(22)));
-    test('The optimal price for n = 10 should be \$30', () => expect(memoizedLogCutting.cutLog(p, 10), equals(30)));
-    test('The optimal price for n = 22 should be \$65', () => expect(memoizedLogCutting.cutLog(p, 22), equals(65)));
-    test('The optimal price for n = 23 should be \$69', () => expect(memoizedLogCutting.cutLog(p, 23), equals(69)));
-    test('The optimal price for n = 37 should be \$112', () => expect(memoizedLogCutting.cutLog(p, 37), equals(112)));
-    test('The optimal price for n = 41 should be \$125', () => expect(memoizedLogCutting.cutLog(p, 41), equals(125)));
-    test('The optimal price for n = 50 should be \$153', () => expect(memoizedLogCutting.cutLog(p, 50), equals(153)));
+    test(r'The optimal price for n = 0 should be \$0', () => expect(memoizedLogCutting.cutLog(p, 0), equals(0)));
+    test(r'The optimal price for n = 1 should be \$1', () => expect(memoizedLogCutting.cutLog(p, 1), equals(1)));
+    test(r'The optimal price for n = 5 should be \$13', () => expect(memoizedLogCutting.cutLog(p, 5), equals(13)));
+    test(r'The optimal price for n = 8 should be \$22', () => expect(memoizedLogCutting.cutLog(p, 8), equals(22)));
+    test(r'The optimal price for n = 10 should be \$30', () => expect(memoizedLogCutting.cutLog(p, 10), equals(30)));
+    test(r'The optimal price for n = 22 should be \$65', () => expect(memoizedLogCutting.cutLog(p, 22), equals(65)));
+    test(r'The optimal price for n = 23 should be \$69', () => expect(memoizedLogCutting.cutLog(p, 23), equals(69)));
+    test(r'The optimal price for n = 37 should be \$112', () => expect(memoizedLogCutting.cutLog(p, 37), equals(112)));
+    test(r'The optimal price for n = 41 should be \$125', () => expect(memoizedLogCutting.cutLog(p, 41), equals(125)));
+    test(r'The optimal price for n = 50 should be \$153', () => expect(memoizedLogCutting.cutLog(p, 50), equals(153)));
   });
 }

@@ -20,6 +20,7 @@ class PiApproximation {
     var sign = -1;
     var n = 3;
 
+    //ignore:literal_only_boolean_expressions
     while (true) {
       // print("${sign > 0 ? '' : '-'}1/$n, $current");
       yield current;

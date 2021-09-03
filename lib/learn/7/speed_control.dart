@@ -9,7 +9,7 @@ class SpeedControl {
 
     return distances
         .map((e) => (3600 * e) / s)
-        .fold<double>(0.0, math.max)
+        .fold<double>(0, math.max)
         .floor();
   }
 

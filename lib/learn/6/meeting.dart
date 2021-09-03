@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class Meeting {
   String meeting(String s) {
     final friends = s.split(';').map((e) => Friend(e)).toList()..sort((a, b) => a.toString().compareTo(b.toString()));
@@ -14,6 +16,7 @@ class Meeting {
   }
 }
 
+@immutable
 class Friend {
   factory Friend(String s) {
     final names = s.split(':');

@@ -23,10 +23,10 @@ void main() {
       final p = ProjectionMotion(h0: 15, v0: 12, a: 80);
       expect(p.heightEq(), equals('h(t) = -16.0t^2 + 11.818t + 15.0'));
       expect(p.horizEq(), equals('x(t) = 2.084t'));
-      expect(p.height(0.0), equals(15.0));
-      expect(p.horiz(0.0), equals(0.0));
-      expect(p.height(1.0), equals(10.818));
-      expect(p.horiz(1.0), equals(2.084));
+      expect(p.height(0), equals(15.0));
+      expect(p.horiz(0), equals(0.0));
+      expect(p.height(1), equals(10.818));
+      expect(p.horiz(1), equals(2.084));
       expect(p.landing(), equals([2.929, 0.0, 1.406]));
     });
   });

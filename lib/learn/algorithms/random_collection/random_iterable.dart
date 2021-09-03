@@ -1,11 +1,9 @@
 import 'dart:collection';
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
-
-import 'internal_iterable.dart';
-import 'random_iterator.dart';
-import 'random_list.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/internal_iterable.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/random_iterator.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/random_list.dart';
 
 class RandomIterable extends IterableBase<int> {
   RandomIterable(this.length, {int? max}) : _max = max ?? length;
@@ -61,12 +59,12 @@ class RandomIterable extends IterableBase<int> {
   @override
   List<int> toList({bool growable = false}) => RandomList(length, max: _max);
 
-  @override
-  int get hashCode => hashValues(length, _max);
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) || other is RandomIterable && other.length == length && other.max == _max;
+  // @override
+  // int get hashCode => hashValues(length, _max);
+  //
+  // @override
+  // bool operator ==(Object other) =>
+  //     identical(this, other) || other is RandomIterable && other.length == length && other.max == _max;
 
   int _item(int index) => Random(index).nextInt(_max);
 }

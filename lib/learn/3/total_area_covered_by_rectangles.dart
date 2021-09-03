@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class TotalAreaCoveredByRectangles {
   int calculate(List<List<int>> rectangles) {
     final rects =
@@ -23,7 +25,7 @@ class TotalAreaCoveredByRectangles {
   List<Rectangle> rectsSplitAtXDividers(List<Rectangle> rects, List<int> xDividers) {
     var dividedRects = rects;
     for (final xDivider in xDividers) {
-      var running = <Rectangle>[];
+      final running = <Rectangle>[];
       for (final rect in dividedRects) {
         final dividedInputRects = rect.splitAtX(xDivider);
         running.addAll(dividedInputRects);
@@ -63,17 +65,18 @@ class TotalAreaCoveredByRectangles {
   }
 
   int calculateBest(List<List<int>> rectangles) {
-    var b = 1 << 62;
+    const b = 1 << 62;
     rectangles = rectangles.map((r) => [...r]).toList()..sort((a, b) => area(b) - area(a));
     final root = HalfSpace();
     var s = 0;
-    for (var rect in rectangles) {
+    for (final rect in rectangles) {
       s += root.add(rect, [-b, -b, b, b]);
     }
     return s;
   }
 }
 
+@immutable
 class Point {
   const Point(this.x, this.y);
 
@@ -94,6 +97,7 @@ class Point {
   String toString() => '($x, $y)';
 }
 
+@immutable
 class Rectangle {
   factory Rectangle.fromList(List<int> rect) {
     final left = Point(rect[0], rect[1]);
@@ -203,7 +207,7 @@ class HalfSpace {
         b[i] = v;
         return right!.add(r, b);
       }
-      var leftR = [...r], leftB = [...b];
+      final leftR = [...r], leftB = [...b];
       leftB[i + 2] = leftR[i + 2] = v;
       r[i] = b[i] = v;
       return left!.add(leftR, leftB) + right!.add(r, b);

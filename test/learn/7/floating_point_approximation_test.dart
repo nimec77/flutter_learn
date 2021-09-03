@@ -9,8 +9,8 @@ void assertFuzzyEquals(num a, num b, num c, [String msg = '']) {
 
   const merr = 1e-12;
   print('Testing $a,  ${b.toStringAsExponential(12)}, $c');
-  var x = floatingPointApproximation.quadratic(a.toDouble(), b.toDouble(), c.toDouble());
-  var smallest = x.abs() < 0.1;
+  final x = floatingPointApproximation.quadratic(a.toDouble(), b.toDouble(), c.toDouble());
+  final smallest = x.abs() < 0.1;
   if (!smallest) {
     print('This root is not the good one');
   }

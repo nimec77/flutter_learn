@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+@immutable
 class RandomMapEntry implements MapEntry<int, int> {
   factory RandomMapEntry(int key, int value) => RandomMapEntry._(key, value);
 

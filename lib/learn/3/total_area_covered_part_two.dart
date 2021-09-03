@@ -1,5 +1,7 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
+
 class TotalAreaCoveredPartTwo {
   int calculate(List<List<int>> rectangles) {
     if (rectangles.isEmpty) {
@@ -50,6 +52,7 @@ class TotalAreaCoveredPartTwo {
   }
 }
 
+@immutable
 class Rect {
   const Rect({
     required this.minX,

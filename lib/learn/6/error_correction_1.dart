@@ -5,7 +5,7 @@ class ErrorCorrection1 {
         .join()
         .split('')
         .expand((element) => [element * 3])
-        .join('');
+        .join();
   }
 
   String decode(String bits) {

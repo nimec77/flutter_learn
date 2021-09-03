@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
                   child: SizedBox.shrink(
                     child: SizedBox.shrink(
                       child: Container(
+                        color: Colors.white,
                         child: SizedBox.shrink(
                           child: SizedBox.shrink(
                             child: Builder(

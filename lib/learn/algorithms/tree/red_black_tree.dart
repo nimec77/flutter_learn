@@ -1,6 +1,6 @@
 import 'package:flutter_learn/learn/algorithms/tree/red_black_node.dart';
+import 'package:flutter_learn/learn/algorithms/tree/tree_binary.dart';
 
-import 'tree_binary.dart';
 
 class RedBlackTree<T extends Comparable<T>> extends TreeBinary<T> {
   RedBlackTree({RedBlackNode<T>? root}) : _root = root;
@@ -222,7 +222,7 @@ class RedBlackTree<T extends Comparable<T>> extends TreeBinary<T> {
 
         if (s != null && s.left?.color == NodeColor.black && s.right?.color == NodeColor.black) {
           s.color = NodeColor.red;
-          x = x.parent!;
+          x = x.parent;
         } else {
           if (s != null && s.right?.color == NodeColor.black) {
             s.left?.color = NodeColor.black;
@@ -247,7 +247,7 @@ class RedBlackTree<T extends Comparable<T>> extends TreeBinary<T> {
         }
         if (s != null && s.right?.color == NodeColor.black && s.left?.color == NodeColor.black) {
           s.color = NodeColor.red;
-          x = x.parent!;
+          x = x.parent;
         } else {
           if (s != null && s.left?.color == NodeColor.black) {
             s.right?.color = NodeColor.black;

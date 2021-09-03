@@ -12,6 +12,6 @@ class NumberInStrings {
   }
 
   int solveBest(String s) {
-    return s.split(RegExp(r'[0-9]')).where((element) => element != '').map(int.parse).fold(0, math.max);
+    return s.split(RegExp('[0-9]')).where((element) => element != '').map(int.parse).fold(0, math.max);
   }
 }

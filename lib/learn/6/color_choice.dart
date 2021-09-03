@@ -30,7 +30,7 @@ class ColorChoice {
 
     yield Tuple(index++, 1);
     for (var i = 1; i < prev.length; ++i) {
-      yield (Tuple(index++, prev[i - 1] + prev[i]));
+      yield Tuple(index++, prev[i - 1] + prev[i]);
     }
     yield Tuple(index++, 1);
   }

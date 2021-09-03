@@ -14,6 +14,6 @@ void main() {
     test('nbYear(1500000, 0.25, 1, 2000000)',
         () => expect(growthOfAPopulation.nbYear(1500000, 0.25, 1, 2000000), equals(116)));
     test('nbYear(1500000, 0.0, 10000, 2000000)',
-        () => expect(growthOfAPopulation.nbYear(1500000, 0.0, 10000, 2000000), equals(50)));
+        () => expect(growthOfAPopulation.nbYear(1500000, 0, 10000, 2000000), equals(50)));
   });
 }

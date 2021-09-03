@@ -1,6 +1,8 @@
 include: package:very_good_analysis/analysis_options.yaml
 
 analyzer:
+  plugins:
+    - dart_code_metrics
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"

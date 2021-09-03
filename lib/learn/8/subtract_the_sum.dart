@@ -1,5 +1,6 @@
 class SubtractTheSum {
-  static const fruitsString = '''1-kiwi
+  static const fruitsString = '''
+  1-kiwi
   2-pear
   3-kiwi
   4-banana

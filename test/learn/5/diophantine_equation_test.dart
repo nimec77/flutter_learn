@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   final diophantineEquation = DiophantineEquation();
-  dotest(int n, List<List<int>> exp) {
+  void dotest(int n, List<List<int>> exp) {
     test('Testing for $n', () =>
         expect(diophantineEquation.solEqua(n), equals(exp)));
   }

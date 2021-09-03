@@ -1,11 +1,9 @@
 import 'dart:collection';
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
-
-import 'internal_iterable.dart';
-import 'random_map_entry.dart';
-import 'random_map_entry_iterator.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/internal_iterable.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/random_map_entry.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/random_map_entry_iterator.dart';
 
 class RandomMapEntryIterable extends IterableBase<MapEntry<int, int>> {
   RandomMapEntryIterable(this.length, {int? max}) : _max = max ?? length;
@@ -66,12 +64,12 @@ class RandomMapEntryIterable extends IterableBase<MapEntry<int, int>> {
     return _mapEntry(index);
   }
 
-  @override
-  int get hashCode => hashValues(length, _max);
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) || other is RandomMapEntryIterable && other.length == length && other.max == max;
+  // @override
+  // int get hashCode => hashValues(length, _max);
+  //
+  // @override
+  // bool operator ==(Object other) =>
+  //     identical(this, other) || other is RandomMapEntryIterable && other.length == length && other.max == max;
 
   RandomMapEntry _mapEntry(int index) => RandomMapEntry(index, Random(index).nextInt(_max));
 }

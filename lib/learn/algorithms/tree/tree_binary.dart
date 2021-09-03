@@ -202,10 +202,10 @@ class TreeBinary<T extends Comparable<T>> {
     if (node == null) {
       return;
     }
-    yield ('\n');
-    yield (padding);
-    yield (pointer);
-    yield (node.value.toString());
+    yield '\n';
+    yield padding;
+    yield pointer;
+    yield node.value.toString();
 
     final paddingBuffer = StringBuffer(padding);
     if (hasRightSibling) {

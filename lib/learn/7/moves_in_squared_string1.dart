@@ -1,7 +1,7 @@
 class MovesInSquaredString1 {
   String vertMirror(String str) {
     final list = str.split('\n');
-    final result = list.map((e) => e.split('').reversed.join(''));
+    final result = list.map((e) => e.split('').reversed.join());
     return result.join('\n');
   }
 

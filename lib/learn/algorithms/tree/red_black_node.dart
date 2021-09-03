@@ -1,7 +1,8 @@
-import 'tree_node.dart';
+
+import 'package:flutter_learn/learn/algorithms/tree/tree_node.dart';
 
 extension RedBlackCast<T extends Comparable<T>> on TreeNode<T>? {
-  RedBlackNode<T>? cast() =>  this != null ? this as RedBlackNode<T> : null;
+  RedBlackNode<T>? cast() =>  this != null ? this as RedBlackNode<T>? : null;
 }
 
 enum NodeColor {

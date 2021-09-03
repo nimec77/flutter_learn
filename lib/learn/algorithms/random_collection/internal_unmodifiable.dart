@@ -1,3 +1,5 @@
+//ignore_for_file: avoid_setters_without_getters
+
 import 'dart:collection';
 
 import 'dart:math';

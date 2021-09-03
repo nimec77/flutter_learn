@@ -12,31 +12,31 @@ void main() {
   // });
 
   test('Roll Left', () {
-    var tree = [' o      ', ' / o o/ ', ' ///    ', '   ///  ', '   ||   ', '   ||   ', '   ||   '];
-    var actual = nutFarm2.shakeTree(tree);
-    var expected = [2, 0, 1, 0, 0, 0, 0, 0];
+    final tree = [' o      ', ' / o o/ ', ' ///    ', '   ///  ', '   ||   ', '   ||   ', '   ||   '];
+    final actual = nutFarm2.shakeTree(tree);
+    final expected = [2, 0, 1, 0, 0, 0, 0, 0];
     expect(actual, equals(expected));
   });
 
   test('Bounce Right', () {
-    var tree = [' o o o  ', ' \\    \\ ', '   \\    ', '  \\  \\  ', '   ||   ', '   ||   ', '   ||   '];
-    var actual = nutFarm2.shakeTree(tree);
-    var expected = [0, 0, 0, 1, 1, 0, 1, 0];
+    final tree = [' o o o  ', r' \\    \\ ', r'   \\    ', r'  \\  \\  ', '   ||   ', '   ||   ', '   ||   '];
+    final actual = nutFarm2.shakeTree(tree);
+    final expected = [0, 0, 0, 1, 1, 0, 1, 0];
     expect(actual, equals(expected));
   });
 
   test('Roll Right', () {
-    var tree = [
+    final tree = [
       ' o o  oo  ',
-      ' \\\\\\   \\\\ ',
-      '  o \\o    ',
-      '  \\\\  \\   ',
+      r' \\\\\\   \\\\ ',
+      r'  o \\o    ',
+      r'  \\\\  \\   ',
       '    ||    ',
       '    ||    ',
       '    ||    '
     ];
-    var actual = nutFarm2.shakeTree(tree);
-    var expected = [0, 0, 0, 0, 1, 3, 0, 1, 0, 1];
+    final actual = nutFarm2.shakeTree(tree);
+    final expected = [0, 0, 0, 0, 1, 3, 0, 1, 0, 1];
     expect(actual, equals(expected));
   });
 }

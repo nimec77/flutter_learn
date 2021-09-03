@@ -1,12 +1,13 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/internal_iterable.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/internal_unmodifiable.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/random_iterator.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/random_map.dart';
 
-import 'internal_iterable.dart';
-import 'internal_unmodifiable.dart';
-import 'random_iterator.dart';
-import 'random_map.dart';
 
+@immutable
 class RandomList extends UnmodifiableRandomListBase {
   RandomList(this.length, {int? max}) : _max = max ?? length;
 

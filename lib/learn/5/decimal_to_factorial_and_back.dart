@@ -41,6 +41,7 @@ class DecimalToFactorialAndBack {
   Iterable<int> factorial() sync* {
     var base = 1;
     var fact = 1;
+    //ignore: literal_only_boolean_expressions
     while (true) {
       fact *= base++;
       yield fact;

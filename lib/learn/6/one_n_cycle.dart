@@ -5,6 +5,7 @@ class OneNCycle {
     }
     var i = 0;
     var val = 1;
+    //ignore:literal_only_boolean_expressions
     while (true) {
       i++;
       val = val * 10 % n;

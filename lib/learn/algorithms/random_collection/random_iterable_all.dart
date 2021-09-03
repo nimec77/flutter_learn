@@ -1,11 +1,9 @@
 import 'dart:collection';
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/internal_iterable.dart';
+import 'package:flutter_learn/learn/algorithms/random_collection/random_iterator.dart';
 import 'package:flutter_learn/learn/algorithms/random_collection/random_list.dart';
-
-import 'internal_iterable.dart';
-import 'random_iterator.dart';
 
 class RandomIterableAll implements Iterable<int> {
   RandomIterableAll(this.length, {int? max}) : _max = max ?? length;
@@ -130,7 +128,9 @@ class RandomIterableAll implements Iterable<int> {
     } else {
       buffer.write(iterator.current.toString());
       while (iterator.moveNext()) {
-        buffer..write(separator)..write(iterator.current.toString());
+        buffer
+          ..write(separator)
+          ..write(iterator.current.toString());
       }
     }
 
@@ -252,16 +252,17 @@ class RandomIterableAll implements Iterable<int> {
   }
 
   @override
+  //ignore: use_to_and_as_if_applicable
   Iterable<T> whereType<T>() {
     return WhereTypeIterable(this);
   }
 
-  @override
-  int get hashCode => hashValues(length, _max);
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) || other is RandomIterableAll && other.length == length && other.max == _max;
+  // @override
+  // int get hashCode => hashValues(length, _max);
+  //
+  // @override
+  // bool operator ==(Object other) =>
+  //     identical(this, other) || other is RandomIterableAll && other.length == length && other.max == _max;
 
   @override
   String toString() => IterableBase.iterableToShortString(this);
