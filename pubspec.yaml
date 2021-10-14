@@ -24,6 +24,7 @@ dependencies:
   benchmark: ^0.3.0
   crypto: ^3.0.1
   cupertino_icons: ^1.0.3
+  dartz: ^0.10.0
   flutter:
     sdk: flutter
   tuple: ^2.0.0
