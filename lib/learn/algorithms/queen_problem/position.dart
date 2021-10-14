@@ -22,15 +22,22 @@ class Position {
   final int x;
   final int y;
 
-  Position get step {
-    var newX = x + 1;
-    var newY = y;
-    if (newX >= kBoardSize) {
-      newY = (y + 1) % kBoardSize;
-      newX = 0;
+  EitherPosition get stepY {
+    final newY = y + 1;
+    if (newY >= kBoardSize) {
+      return Left(Exception('Going beyond the board by Y'));
     }
 
-    return Position(newX, newY);
+    return Right(Position(x, newY));
+  }
+
+  EitherPosition get stepX {
+    final newX = x + 1;
+    if (newX >= kBoardSize) {
+      return Left(Exception('Going beyond the board by X'));
+    }
+
+    return Right(Position(newX, y));
   }
 
   Position get topBottomStep {

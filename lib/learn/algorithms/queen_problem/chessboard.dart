@@ -1,100 +1,79 @@
-import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_learn/learn/algorithms/queen_problem/position.dart';
 
+@immutable
 class Chessboard {
-  Chessboard(this.board);
+  const Chessboard(this.board);
 
-  Chessboard.empty() : board = _clear;
+  Chessboard.empty()
+      : board =
+            List.generate(kBoardSize, (_) => List.generate(kBoardSize, (_) => false, growable: false), growable: false);
 
-  List<List<int>> board;
+  final List<List<bool>> board;
 
-  static List<List<int>> get _clear =>
-      List.generate(kBoardSize, (_) => List.generate(kBoardSize, (_) => 0, growable: false), growable: false);
-
-  List<List<int>> get copyBoard =>
-      [
-        ...board.map((e) => [...e])
-      ];
-
-  void clear() {
-    board = _clear;
+  Iterable<Position> places(int y) sync* {
+    if (hasQueenOnY(y)) {
+      return;
+    }
+    for (var x = 0; x <= kBoardSize; ++x) {
+      if (hasQueenOnX(x)) {
+        continue;
+      }
+      final pos = Position(x, y);
+      if (hasQueenBottom(pos)) {
+        continue;
+      }
+      if (hasQueenTop(pos)) {
+        continue;
+      }
+      board[y][x] = true;
+      yield pos;
+    }
   }
 
-  bool addQueen(Position position) {
-    final desk = copyBoard;
-    if (desk[position.y][position.x] != 0) {
-      return false;
-    }
-    for (var x = 0; x < kBoardSize; ++x) {
-      var value = desk[position.y][x];
-      if (value == -1) {
-        return false;
-      }
-      desk[position.y][x] = ++value;
-    }
-    for (var y = 0; y < kBoardSize; ++y) {
-      var value = desk[y][position.x];
-      if (value == -1) {
-        return false;
-      }
-      desk[y][position.x] = ++value;
-    }
-    var topBottomStep = position;
-    while ((topBottomStep = topBottomStep.topBottomStep) != position) {
-      var value = desk[topBottomStep.y][topBottomStep.x];
-      if (value == -1) {
-        return false;
-      }
-      desk[topBottomStep.y][topBottomStep.x] = ++value;
-    }
-    var bottomTopStep = position;
-    while ((bottomTopStep = bottomTopStep.bottomTopStep) != position) {
-      var value = desk[bottomTopStep.y][bottomTopStep.x];
-      if (value == -1) {
-        return false;
-      }
-      desk[bottomTopStep.y][bottomTopStep.x] = ++value;
-    }
-    desk[position.y][position.x] = -1;
-
-    board = desk;
-    return true;
+  void removeQueen(Position position) {
+    assert(board[position.y][position.x], 'The is no Queen in this place');
+    board[position.y][position.x] = false;
   }
 
-  bool removeQueen(Position position) {
-    if (board[position.y][position.x] != -1) {
-      return false;
-    }
-    for (var x = 0; x < kBoardSize; ++x) {
-      board[position.y][x]--;
-    }
-    for (var y = 0; y < kBoardSize; ++y) {
-      board[y][position.x]--;
-    }
-    var topBottomStep = position;
-    while ((topBottomStep = topBottomStep.topBottomStep) != position) {
-      board[topBottomStep.y][topBottomStep.x]--;
-    }
-    var bottomTopStep = position;
-    while ((bottomTopStep = bottomTopStep.bottomTopStep) != position) {
-      board[bottomTopStep.y][bottomTopStep.x]--;
-    }
-    board[position.y][position.x] = 0;
-    return true;
+  bool hasQueenOnY(int y) {
+    return board[y].any((place) => place);
   }
 
-  EitherPosition findFirstPlace(Position position) {
-    for (var y = position.y + 1; y < kBoardSize; ++y) {
-      for (var x = (position.x + 1) % kBoardSize; x < kBoardSize; ++x) {
-        if (board[y][x] == 0) {
-          final newPosition = Position(x, y);
-          if (addQueen(newPosition)) {
-            return Right(newPosition);
-          }
-        }
+  bool hasQueenOnX(int x) {
+    for (var y = 0; y <= kBoardSize; ++y) {
+      if (board[y][x]) {
+        return true;
       }
     }
-    return Left(Exception('No place for the Queen found'));
+    return false;
+  }
+
+  bool hasQueenBottom(Position position) {
+    var pos = position;
+    if (board[position.y][position.x]) {
+      return true;
+    }
+    while ((pos = pos.bottomTopStep) != position) {
+      if (board[position.y][position.x]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool hasQueenTop(Position position) {
+    var pos = position;
+    if (board[position.y][position.x]) {
+      return true;
+    }
+    while ((pos = pos.topBottomStep) != position) {
+      if(board[position.y][position.x]) {
+        return true;
+      }
+    }
+    
+    return false;
   }
 
   @override

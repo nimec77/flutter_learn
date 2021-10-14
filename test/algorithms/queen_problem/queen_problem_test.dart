@@ -5,8 +5,6 @@ void main() {
   group('QueenProblem test', () {
     test('queenProblem count 8 test', () {
       final queenProblem = QueenProblem();
-      final result = queenProblem.queenProblem(8);
-      print(result);
     });
   });
 }

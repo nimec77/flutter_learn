@@ -9,55 +9,36 @@ enum PlaceResult {
   noPlace,
   allPlaced,
 }
+const maxQueens = 8;
 
 @immutable
 class QueenProblem {
-  final _chessboard = Chessboard.empty();
-  final _places = Queue<Position>();
 
-  List<Position> queenProblem(int count) {
-    _chessboard.clear();
-    _places
-      ..clear()
-      ..add(Position.zero());
+  List<Position> queenProblem() {
+    final queue = Queue<Position>();
+    final chessboard = Chessboard.empty();
+    final places = Queue<Iterable<Position>>();
 
-    _chessboard.addQueen(_places.last);
+    // final eitherPosition = position.stepY;
+    // if (eitherPosition.isLeft()) {
+    //   return;
+    // }
+    // final newYPosition = eitherPosition | Position.zero();
+    // if (hasQueenOnY(newYPosition.y)) {
+    //   return;
+    // }
 
-    var result = PlaceResult.placed;
-    var position = _chessboard.findFirstPlace(_places.last) | Position.zero();
-    while ((result = _placeQueen(position)) != PlaceResult.allPlaced && _places.length < count) {
-      if (result == PlaceResult.placed) {
-        position = _places.last;
-      } else if (result == PlaceResult.noPlace) {
-        while (_places.isNotEmpty) {
-          final pos = _places.removeLast();
-          if (!_chessboard.removeQueen(pos)) {
-            throw AssertionError('Error remove Queen from: $pos');
-          }
-          final newPosition = pos.step;
-          if (newPosition == Position.zero()) {
-            continue;
-          }
-          final find = _chessboard.findFirstPlace(newPosition);
-          if (find.isLeft()) {
-            continue;
-          }
-          position = find | Position.zero();
-          break;
-        }
+    for (var y = 0; y < kBoardSize; ++y) {
+      places.add(chessboard.places(y));
+      for (final position in places.last) {
+
       }
     }
 
-    return _places.toList();
+    return queue.toList();
   }
 
-  PlaceResult _placeQueen(Position position) {
-    return _chessboard.findFirstPlace(position).fold(
-          (exception) => PlaceResult.noPlace,
-          (newPosition) {
-            _places.add(newPosition);
-            return PlaceResult.placed;
-          },
-        );
+  PlaceResult placeQueen(Chessboard chessboard, int y) {
+    return PlaceResult.noPlace;
   }
 }
