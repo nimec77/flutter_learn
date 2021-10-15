@@ -6,15 +6,14 @@ class Chessboard {
   Chessboard.empty()
       : board =
             List.generate(kBoardSize, (_) => List.generate(kBoardSize, (_) => false, growable: false), growable: false),
-        filledPlacesX = Map.from(List.generate(kBoardSize, (_) => false, growable: false).asMap());
+        filledPlacesX = Map.from(List.generate(kBoardSize, (_) => false).asMap());
 
   final List<List<bool>> board;
   final Map<int, bool> filledPlacesX;
 
-  Iterable<Position> places(int y) sync* {
+  Iterable<Position> places(final int y) sync* {
     for (final pair in filledPlacesX.entries.where((element) => !element.value)) {
-      final x = pair.key;
-      final pos = Position(x, y);
+      final pos = Position(pair.key, y);
       if (hasQueenBottom(pos)) {
         continue;
       }
@@ -25,19 +24,19 @@ class Chessboard {
     }
   }
 
-  void addQueen(Position position) {
+  void addQueen(final Position position) {
     assert(!board[position.y][position.x], 'This place is already taken');
     board[position.y][position.x] = true;
     filledPlacesX[position.x] = true;
   }
 
-  void removeQueen(Position position) {
+  void removeQueen(final Position position) {
     assert(board[position.y][position.x], 'The is no Queen in this place');
     board[position.y][position.x] = false;
     filledPlacesX[position.x] = false;
   }
 
-  bool hasQueenBottom(Position position) {
+  bool hasQueenBottom(final Position position) {
     var pos = position;
     while ((pos = pos.bottomTopStep) != position) {
       if (board[pos.y][pos.x]) {
@@ -47,7 +46,7 @@ class Chessboard {
     return false;
   }
 
-  bool hasQueenTop(Position position) {
+  bool hasQueenTop(final Position position) {
     var pos = position;
     while ((pos = pos.topBottomStep) != position) {
       if (board[pos.y][pos.x]) {
