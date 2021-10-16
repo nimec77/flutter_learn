@@ -1,4 +1,3 @@
-
 import 'package:flutter_learn/learn/algorithms/queen_problem/chessboard.dart';
 import 'package:flutter_learn/learn/algorithms/queen_problem/position.dart';
 
@@ -6,22 +5,26 @@ const maxQueens = 8;
 
 class QueenProblem {
   late Chessboard chessboard;
+  late List<List<Position>> solutions;
 
-  List<Position> queenProblem(final int startX) {
+  List<List<Position>> queenProblem() {
     chessboard = Chessboard.empty();
+    solutions = [];
 
-    final startPosition = Position(startX, 0);
-    chessboard.addQueen(startPosition);
-    if (!_placeQueen(1)) {
+    _placeQueen(0);
+    if (solutions.isEmpty) {
       throw StateError('Failed to place $maxQueens queens on the chessboard');
     }
+    print('Fount ${solutions.length} solutions tho the problem with $maxQueens queens');
 
-    return chessboard.positions;
+    return solutions;
   }
 
   bool _placeQueen(final int y) {
     if (chessboard.positions.length >= maxQueens) {
-      return true;
+      print(chessboard.positions);
+      solutions.add(List.from(chessboard.positions));
+      return false;
     }
     for (final position in chessboard.places(y)) {
       chessboard.addQueen(position);
