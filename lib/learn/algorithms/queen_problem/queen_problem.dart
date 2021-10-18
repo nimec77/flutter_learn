@@ -15,7 +15,7 @@ class QueenProblem {
     if (solutions.isEmpty) {
       throw StateError('Failed to place $maxQueens queens on the chessboard');
     }
-    print('Fount ${solutions.length} solutions tho the problem with $maxQueens queens');
+    print('Fount ${solutions.length} solutions to the problem with $maxQueens queens');
 
     return solutions;
   }
